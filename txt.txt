@@ -5263,6 +5263,20 @@
       rdfs:subClassOf :Item .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/ToolMaterial
+:ToolMaterial rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :Item
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty [ owl:inverseOf :craftedWith
+                                                                          ] ;
+                                                           owl:someValuesFrom :Tool
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+              rdfs:subClassOf :Item .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/TotemOfUndying
 :TotemOfUndying rdf:type owl:Class ;
                 rdfs:subClassOf :Item ,

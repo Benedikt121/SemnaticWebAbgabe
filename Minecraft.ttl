@@ -114,7 +114,7 @@
        rdfs:subClassOf :Mob ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
-                         owl:allValuesFrom :Passive
+                         owl:someValuesFrom :Passive
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
@@ -143,18 +143,18 @@
            rdfs:subClassOf :Animal ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :behaves ;
-                             owl:allValuesFrom :Passive
+                             owl:someValuesFrom :Passive
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
-                             owl:allValuesFrom [ rdf:type owl:Class ;
-                                                 owl:unionOf ( :Badlands
-                                                               :ErodedBadlands
-                                                               :Savanna
-                                                               :SavannaPlateau
-                                                               :WoodedBadlands
-                                                             )
-                                               ]
+                             owl:someValuesFrom [ rdf:type owl:Class ;
+                                                  owl:unionOf ( :Badlands
+                                                                :ErodedBadlands
+                                                                :Savanna
+                                                                :SavannaPlateau
+                                                                :WoodedBadlands
+                                                              )
+                                                ]
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -173,7 +173,7 @@
                 rdfs:subClassOf :Item ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :rarity ;
-                                  owl:allValuesFrom :Common
+                                  owl:someValuesFrom :Common
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :stackSize ;
@@ -187,7 +187,7 @@
            rdfs:subClassOf :Item ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
@@ -219,7 +219,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :rarity ;
-                         owl:allValuesFrom :Common
+                         owl:someValuesFrom :Common
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
@@ -302,12 +302,12 @@
          rdfs:subClassOf :Animal ,
                          :Aquatic ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :spawnsIn ;
-                           owl:someValuesFrom :LushCaves
+                           owl:onProperty :behaves ;
+                           owl:someValuesFrom :Passive
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :behaves ;
-                           owl:allValuesFrom :Passive
+                           owl:onProperty :spawnsIn ;
+                           owl:someValuesFrom :LushCaves
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -336,7 +336,7 @@
                         :NotFullBlock ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
-                          owl:allValuesFrom :Common
+                          owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -373,11 +373,11 @@
      rdfs:subClassOf :Animal ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :behaves ;
-                       owl:allValuesFrom :Passive
+                       owl:someValuesFrom :Passive
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :spawnsIn ;
-                       owl:allValuesFrom :OverworldBiome
+                       owl:someValuesFrom :OverworldBiome
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
@@ -406,22 +406,22 @@
                      :Arthropod ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :behaves ;
-                       owl:allValuesFrom :Neutral
+                       owl:someValuesFrom :Neutral
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :spawnsIn ;
-                       owl:allValuesFrom [ rdf:type owl:Class ;
-                                           owl:unionOf ( :BirchForest
-                                                         :CherryGrove
-                                                         :FlowerForest
-                                                         :Forest
-                                                         :MangroveSwamp
-                                                         :Meadow
-                                                         :OldGrowthBirchForest
-                                                         :Plains
-                                                         :SunflowerPlains
-                                                       )
-                                         ]
+                       owl:someValuesFrom [ rdf:type owl:Class ;
+                                            owl:unionOf ( :BirchForest
+                                                          :CherryGrove
+                                                          :FlowerForest
+                                                          :Forest
+                                                          :MangroveSwamp
+                                                          :Meadow
+                                                          :OldGrowthBirchForest
+                                                          :Plains
+                                                          :SunflowerPlains
+                                                        )
+                                          ]
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
@@ -440,7 +440,7 @@
           rdfs:subClassOf :Crops ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :rarity ;
-                            owl:allValuesFrom :Common
+                            owl:someValuesFrom :Common
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
@@ -484,7 +484,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :rarity ;
-                            owl:allValuesFrom :Common
+                            owl:someValuesFrom :Common
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
@@ -512,11 +512,11 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :harvestedWith ;
-                             owl:allValuesFrom :Shears
+                             owl:someValuesFrom :Shears
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -535,11 +535,11 @@
        rdfs:subClassOf :Monster ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
-                         owl:allValuesFrom :Hostile
+                         owl:someValuesFrom :Hostile
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
-                         owl:allValuesFrom :NetherBiome
+                         owl:someValuesFrom :NetherBiome
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
@@ -558,7 +558,7 @@
              rdfs:subClassOf :Item ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
-                               owl:allValuesFrom :Common
+                               owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :craftedWith ;
@@ -577,7 +577,7 @@
           rdfs:subClassOf :Item ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :rarity ;
-                            owl:allValuesFrom :Common
+                            owl:someValuesFrom :Common
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :craftsInto ;
@@ -601,11 +601,11 @@
                              :Item ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :harvestedWith ;
-                               owl:allValuesFrom :Pickaxe
+                               owl:someValuesFrom :Pickaxe
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
-                               owl:allValuesFrom :Common
+                               owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :craftedWith ;
@@ -635,11 +635,11 @@
                                :FullBlock ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :harvestedWith ;
-                                 owl:allValuesFrom :Pickaxe
+                                 owl:someValuesFrom :Pickaxe
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :rarity ;
-                                 owl:allValuesFrom :Common
+                                 owl:someValuesFrom :Common
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :craftedWith ;
@@ -669,11 +669,11 @@
                                 :Item ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :harvestedWith ;
-                                  owl:allValuesFrom :Pickaxe
+                                  owl:someValuesFrom :Pickaxe
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :rarity ;
-                                  owl:allValuesFrom :Common
+                                  owl:someValuesFrom :Common
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :craftsInto ;
@@ -698,11 +698,11 @@
                              :Gold ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :harvestedWith ;
-                               owl:allValuesFrom :Pickaxe
+                               owl:someValuesFrom :Pickaxe
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
-                               owl:allValuesFrom :Common
+                               owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :craftedWith ;
@@ -731,7 +731,7 @@
              rdfs:subClassOf :Iron ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
-                               owl:allValuesFrom :Common
+                               owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :craftedWith ;
@@ -774,15 +774,15 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Hostile
+                          owl:someValuesFrom :Hostile
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
-                          owl:allValuesFrom [ rdf:type owl:Class ;
-                                              owl:unionOf ( :MangroveSwamp
-                                                            :Swamp
-                                                          )
-                                            ]
+                          owl:someValuesFrom [ rdf:type owl:Class ;
+                                               owl:unionOf ( :MangroveSwamp
+                                                             :Swamp
+                                                           )
+                                             ]
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
@@ -796,7 +796,7 @@
       rdfs:subClassOf :Item ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :rarity ;
-                        owl:allValuesFrom :Common
+                        owl:someValuesFrom :Common
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :craftsInto ;
@@ -828,7 +828,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :rarity ;
-                            owl:allValuesFrom :Common
+                            owl:someValuesFrom :Common
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
@@ -843,11 +843,11 @@
                            :Item ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :harvestedWith ;
-                             owl:allValuesFrom :Pickaxe
+                             owl:someValuesFrom :Pickaxe
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :craftedWith ;
@@ -892,7 +892,7 @@
       rdfs:subClassOf :Item ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :rarity ;
-                        owl:allValuesFrom :Common
+                        owl:someValuesFrom :Common
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :craftedWith ;
@@ -924,11 +924,11 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Hostile
+                          owl:someValuesFrom :Hostile
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
-                          owl:allValuesFrom :OverworldBiome
+                          owl:someValuesFrom :OverworldBiome
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
@@ -942,7 +942,7 @@
            rdfs:subClassOf :Item ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :craftsInto ;
@@ -961,11 +961,11 @@
        rdfs:subClassOf :Animal ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
-                         owl:allValuesFrom :Passive
+                         owl:someValuesFrom :Passive
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
-                         owl:allValuesFrom :Desert
+                         owl:someValuesFrom :Desert
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
@@ -986,11 +986,11 @@
                            :Undead ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :behaves ;
-                             owl:allValuesFrom :Passive
+                             owl:someValuesFrom :Passive
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
-                             owl:allValuesFrom :Desert
+                             owl:someValuesFrom :Desert
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -1014,7 +1014,7 @@
         rdfs:subClassOf :Crops ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
-                          owl:allValuesFrom :Common
+                          owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
@@ -1028,23 +1028,23 @@
      rdfs:subClassOf :Animal ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :behaves ;
-                       owl:allValuesFrom :Passive
+                       owl:someValuesFrom :Passive
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :spawnsIn ;
-                       owl:allValuesFrom [ rdf:type owl:Class ;
-                                           owl:unionOf ( :Desert
-                                                         :Meadow
-                                                         :Plains
-                                                         :Savanna
-                                                         :SnowyPlains
-                                                         :SnowyTaiga
-                                                         :SunflowerPlains
-                                                         :Swamp
-                                                         :Taiga
-                                                         :TemperateBiome
-                                                       )
-                                         ]
+                       owl:someValuesFrom [ rdf:type owl:Class ;
+                                            owl:unionOf ( :Desert
+                                                          :Meadow
+                                                          :Plains
+                                                          :Savanna
+                                                          :SnowyPlains
+                                                          :SnowyTaiga
+                                                          :SunflowerPlains
+                                                          :Swamp
+                                                          :Taiga
+                                                          :TemperateBiome
+                                                        )
+                                          ]
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
@@ -1064,11 +1064,11 @@
                             :Monster ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :behaves ;
-                              owl:allValuesFrom :Neutral
+                              owl:someValuesFrom :Neutral
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :spawnsIn ;
-                              owl:allValuesFrom :OverworldBiome
+                              owl:someValuesFrom :OverworldBiome
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :dropsItem ;
@@ -1106,11 +1106,11 @@
          rdfs:subClassOf :Animal ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :behaves ;
-                           owl:allValuesFrom :Passive
+                           owl:someValuesFrom :Passive
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
-                           owl:allValuesFrom :OverworldBiome
+                           owl:someValuesFrom :OverworldBiome
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -1139,7 +1139,7 @@
       rdfs:subClassOf :Item ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :rarity ;
-                        owl:allValuesFrom :Common
+                        owl:someValuesFrom :Common
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :craftedWith ;
@@ -1158,20 +1158,20 @@
      rdfs:subClassOf :Animal ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :behaves ;
-                       owl:allValuesFrom :Passive
+                       owl:someValuesFrom :Passive
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :spawnsIn ;
-                       owl:allValuesFrom [ rdf:type owl:Class ;
-                                           owl:unionOf ( :ColdOcean
-                                                         :DeepColdOcean
-                                                         :DeepLukewarmOcean
-                                                         :DeepOcean
-                                                         :LukewarmOcean
-                                                         :Ocean
-                                                         :Passive
-                                                       )
-                                         ]
+                       owl:someValuesFrom [ rdf:type owl:Class ;
+                                            owl:unionOf ( :ColdOcean
+                                                          :DeepColdOcean
+                                                          :DeepLukewarmOcean
+                                                          :DeepOcean
+                                                          :LukewarmOcean
+                                                          :Ocean
+                                                          :Passive
+                                                        )
+                                          ]
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
@@ -1225,7 +1225,7 @@
              rdfs:subClassOf :Golem ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :behaves ;
-                               owl:allValuesFrom :Passive
+                               owl:someValuesFrom :Passive
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :dropsItem ;
@@ -1275,7 +1275,7 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
-                               owl:allValuesFrom :Common
+                               owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :craftsInto ;
@@ -1294,7 +1294,7 @@
               rdfs:subClassOf :Copper ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :rarity ;
-                                owl:allValuesFrom :Common
+                                owl:someValuesFrom :Common
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :craftedWith ;
@@ -1313,15 +1313,15 @@
            rdfs:subClassOf :Copper ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :harvestedWith ;
-                             owl:allValuesFrom :Pickaxe
+                             owl:someValuesFrom :Pickaxe
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Block
+                             owl:someValuesFrom :Block
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
@@ -1335,11 +1335,11 @@
      rdfs:subClassOf :Animal ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :behaves ;
-                       owl:allValuesFrom :Passive
+                       owl:someValuesFrom :Passive
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :spawnsIn ;
-                       owl:allValuesFrom :OverworldBiome
+                       owl:someValuesFrom :OverworldBiome
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
@@ -1368,11 +1368,11 @@
           rdfs:subClassOf :Monster ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :behaves ;
-                            owl:allValuesFrom :Hostile
+                            owl:someValuesFrom :Hostile
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :spawnsIn ;
-                            owl:allValuesFrom :PaleGarden
+                            owl:someValuesFrom :PaleGarden
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :dropsItem ;
@@ -1391,11 +1391,11 @@
          rdfs:subClassOf :Monster ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :behaves ;
-                           owl:allValuesFrom :Hostile
+                           owl:someValuesFrom :Hostile
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
-                           owl:allValuesFrom :OverworldBiome
+                           owl:someValuesFrom :OverworldBiome
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -1496,18 +1496,18 @@
                          :Aquatic ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :behaves ;
-                           owl:allValuesFrom :Neutral
+                           owl:someValuesFrom :Neutral
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
-                           owl:allValuesFrom [ rdf:type owl:Class ;
-                                               owl:unionOf ( :DeepLukewarmOcean
-                                                             :DeepOcean
-                                                             :LukewarmOcean
-                                                             :Ocean
-                                                             :WarmOcean
-                                                           )
-                                             ]
+                           owl:someValuesFrom [ rdf:type owl:Class ;
+                                                owl:unionOf ( :DeepLukewarmOcean
+                                                              :DeepOcean
+                                                              :LukewarmOcean
+                                                              :Ocean
+                                                              :WarmOcean
+                                                            )
+                                              ]
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -1526,19 +1526,19 @@
         rdfs:subClassOf :Animal ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Passive
+                          owl:someValuesFrom :Passive
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
-                          owl:allValuesFrom [ rdf:type owl:Class ;
-                                              owl:unionOf ( :Meadow
-                                                            :Plains
-                                                            :Savanna
-                                                            :SavannaPlateau
-                                                            :SunflowerPlains
-                                                            :WindsweptSavanna
-                                                          )
-                                            ]
+                          owl:someValuesFrom [ rdf:type owl:Class ;
+                                               owl:unionOf ( :Meadow
+                                                             :Plains
+                                                             :Savanna
+                                                             :SavannaPlateau
+                                                             :SunflowerPlains
+                                                             :WindsweptSavanna
+                                                           )
+                                             ]
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -1596,24 +1596,24 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :behaves ;
-                           owl:allValuesFrom :Neutral
+                           owl:someValuesFrom :Neutral
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
-                           owl:allValuesFrom [ rdf:type owl:Class ;
-                                               owl:unionOf ( :ColdOcean
-                                                             :DeepColdOcean
-                                                             :DeepLukewarmOcean
-                                                             :DeepOcean
-                                                             :DripstoneCaves
-                                                             :FrozenOcean
-                                                             :FrozenRiver
-                                                             :LukewarmOcean
-                                                             :Ocean
-                                                             :River
-                                                             :WarmOcean
-                                                           )
-                                             ]
+                           owl:someValuesFrom [ rdf:type owl:Class ;
+                                                owl:unionOf ( :ColdOcean
+                                                              :DeepColdOcean
+                                                              :DeepLukewarmOcean
+                                                              :DeepOcean
+                                                              :DripstoneCaves
+                                                              :FrozenOcean
+                                                              :FrozenRiver
+                                                              :LukewarmOcean
+                                                              :Ocean
+                                                              :River
+                                                              :WarmOcean
+                                                            )
+                                              ]
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -1657,7 +1657,7 @@
      rdfs:subClassOf :Throwable ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :rarity ;
-                       owl:allValuesFrom :Common
+                       owl:someValuesFrom :Common
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :stackSize ;
@@ -1716,18 +1716,18 @@
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :behaves ;
-                                 owl:allValuesFrom :Hostile
+                                 owl:someValuesFrom :Hostile
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :spawnsIn ;
-                                 owl:allValuesFrom [ rdf:type owl:Class ;
-                                                     owl:unionOf ( :DeepColdOcean
-                                                                   :DeepFrozenOcean
-                                                                   :DeepLukewarmOcean
-                                                                   :DeepOcean
-                                                                   :Hostile
-                                                                 )
-                                                   ]
+                                 owl:someValuesFrom [ rdf:type owl:Class ;
+                                                      owl:unionOf ( :DeepColdOcean
+                                                                    :DeepFrozenOcean
+                                                                    :DeepLukewarmOcean
+                                                                    :DeepOcean
+                                                                    :Hostile
+                                                                  )
+                                                    ]
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :health ;
@@ -1741,11 +1741,11 @@
          rdfs:subClassOf :Item ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :rarity ;
-                           owl:allValuesFrom :Common
+                           owl:someValuesFrom :Common
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :smeltedFrom ;
-                           owl:allValuesFrom :EmeraldOre
+                           owl:someValuesFrom :EmeraldOre
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :craftedWith ;
@@ -1765,11 +1765,11 @@
                             :Item ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :harvestedWith ;
-                              owl:allValuesFrom :Pickaxe
+                              owl:someValuesFrom :Pickaxe
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
-                              owl:allValuesFrom :Common
+                              owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :dropsItem ;
@@ -1824,7 +1824,7 @@
             rdfs:subClassOf :Throwable ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
-                              owl:allValuesFrom :Common
+                              owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
@@ -1838,18 +1838,18 @@
           rdfs:subClassOf :Monster ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :behaves ;
-                            owl:allValuesFrom :Neutral
+                            owl:someValuesFrom :Neutral
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :spawnsIn ;
-                            owl:allValuesFrom [ rdf:type owl:Class ;
-                                                owl:unionOf ( :EndBiome
-                                                              :NetherWastes
-                                                              :OverworldBiome
-                                                              :SouldSandValley
-                                                              :WarpedForest
-                                                            )
-                                              ]
+                            owl:someValuesFrom [ rdf:type owl:Class ;
+                                                 owl:unionOf ( :EndBiome
+                                                               :NetherWastes
+                                                               :OverworldBiome
+                                                               :SouldSandValley
+                                                               :WarpedForest
+                                                             )
+                                               ]
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :dropsItem ;
@@ -1869,7 +1869,7 @@
                            :Monster ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :behaves ;
-                             owl:allValuesFrom :Hostile
+                             owl:someValuesFrom :Hostile
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -1931,7 +1931,7 @@
          rdfs:subClassOf :Item ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :rarity ;
-                           owl:allValuesFrom :Common
+                           owl:someValuesFrom :Common
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
@@ -1958,7 +1958,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
-                              owl:allValuesFrom :Common
+                              owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
@@ -1972,7 +1972,7 @@
        rdfs:subClassOf :Item ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :rarity ;
-                         owl:allValuesFrom :Common
+                         owl:someValuesFrom :Common
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
@@ -2009,18 +2009,18 @@
      rdfs:subClassOf :Animal ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :behaves ;
-                       owl:allValuesFrom :Neutral
+                       owl:someValuesFrom :Neutral
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :spawnsIn ;
-                       owl:allValuesFrom [ rdf:type owl:Class ;
-                                           owl:unionOf ( :Grove
-                                                         :OldGrowthPineTaiga
-                                                         :OldGrowthSpruceTaiga
-                                                         :SnowyTaiga
-                                                         :Taiga
-                                                       )
-                                         ]
+                       owl:someValuesFrom [ rdf:type owl:Class ;
+                                            owl:unionOf ( :Grove
+                                                          :OldGrowthPineTaiga
+                                                          :OldGrowthSpruceTaiga
+                                                          :SnowyTaiga
+                                                          :Taiga
+                                                        )
+                                          ]
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
@@ -2048,7 +2048,7 @@
       rdfs:subClassOf :Animal ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :behaves ;
-                        owl:allValuesFrom :Passive
+                        owl:someValuesFrom :Passive
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :dropsItem ;
@@ -2113,16 +2113,16 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
-                         owl:allValuesFrom :Hostile
+                         owl:someValuesFrom :Hostile
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
-                         owl:allValuesFrom [ rdf:type owl:Class ;
-                                             owl:unionOf ( :BasaltDeltas
-                                                           :NetherWastes
-                                                           :SouldSandValley
-                                                         )
-                                           ]
+                         owl:someValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :BasaltDeltas
+                                                            :NetherWastes
+                                                            :SouldSandValley
+                                                          )
+                                            ]
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
@@ -2136,7 +2136,7 @@
            rdfs:subClassOf :Item ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
@@ -2150,7 +2150,7 @@
              rdfs:subClassOf :Item ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
-                               owl:allValuesFrom :Common
+                               owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
@@ -2164,7 +2164,7 @@
             rdfs:subClassOf :Item ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
-                              owl:allValuesFrom :Common
+                              owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
@@ -2179,11 +2179,11 @@
                            :Aquatic ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :behaves ;
-                             owl:allValuesFrom :Passive
+                             owl:someValuesFrom :Passive
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
-                             owl:allValuesFrom :OverworldBiome
+                             owl:someValuesFrom :OverworldBiome
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -2207,7 +2207,7 @@
                rdfs:subClassOf :Item ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :rarity ;
-                                 owl:allValuesFrom :Common
+                                 owl:someValuesFrom :Common
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :stackSize ;
@@ -2221,16 +2221,16 @@
       rdfs:subClassOf :Animal ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :behaves ;
-                        owl:allValuesFrom :Neutral
+                        owl:someValuesFrom :Neutral
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :spawnsIn ;
-                        owl:allValuesFrom [ rdf:type owl:Class ;
-                                            owl:unionOf ( :FrozenPeaks
-                                                          :JaggedPeaks
-                                                          :SnowySlopes
-                                                        )
-                                          ]
+                        owl:someValuesFrom [ rdf:type owl:Class ;
+                                             owl:unionOf ( :FrozenPeaks
+                                                           :JaggedPeaks
+                                                           :SnowySlopes
+                                                         )
+                                           ]
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :dropsItem ;
@@ -2249,7 +2249,7 @@
           rdfs:subClassOf :Item ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :rarity ;
-                            owl:allValuesFrom :Uncommon
+                            owl:someValuesFrom :Uncommon
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
@@ -2281,15 +2281,15 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :smeltedFrom ;
-                             owl:allValuesFrom [ rdf:type owl:Class ;
-                                                 owl:unionOf ( :GoldOre
-                                                               :RawGold
-                                                             )
-                                               ]
+                             owl:someValuesFrom [ rdf:type owl:Class ;
+                                                  owl:unionOf ( :GoldOre
+                                                                :RawGold
+                                                              )
+                                                ]
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :craftsInto ;
@@ -2308,7 +2308,7 @@
             rdfs:subClassOf :Gold ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
-                              owl:allValuesFrom :Common
+                              owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :craftedWith ;
@@ -2328,11 +2328,11 @@
                          :Gold ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :harvestedWith ;
-                           owl:allValuesFrom :Pickaxe
+                           owl:someValuesFrom :Pickaxe
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :rarity ;
-                           owl:allValuesFrom :Common
+                           owl:someValuesFrom :Common
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -2364,7 +2364,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :damage ;
@@ -2407,11 +2407,11 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :harvestedWith ;
-                          owl:allValuesFrom :Shovel
+                          owl:someValuesFrom :Shovel
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
-                          owl:allValuesFrom :Common
+                          owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
@@ -2467,18 +2467,18 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :behaves ;
-                            owl:allValuesFrom :Hostile
+                            owl:someValuesFrom :Hostile
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :spawnsIn ;
-                            owl:allValuesFrom [ rdf:type owl:Class ;
-                                                owl:unionOf ( :DeepColdOcean
-                                                              :DeepFrozenOcean
-                                                              :DeepLukewarmOcean
-                                                              :DeepOcean
-                                                              :Hostile
-                                                            )
-                                              ]
+                            owl:someValuesFrom [ rdf:type owl:Class ;
+                                                 owl:unionOf ( :DeepColdOcean
+                                                               :DeepFrozenOcean
+                                                               :DeepLukewarmOcean
+                                                               :DeepOcean
+                                                               :Hostile
+                                                             )
+                                               ]
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :health ;
@@ -2492,7 +2492,7 @@
            rdfs:subClassOf :Item ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
@@ -2506,7 +2506,7 @@
             rdfs:subClassOf :Animal ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :behaves ;
-                              owl:allValuesFrom :Passive
+                              owl:someValuesFrom :Passive
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :dropsItem ;
@@ -2526,11 +2526,11 @@
                          :Item ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :harvestedWith ;
-                           owl:allValuesFrom :Hoe
+                           owl:someValuesFrom :Hoe
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :rarity ;
-                           owl:allValuesFrom :Common
+                           owl:someValuesFrom :Common
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :craftsInto ;
@@ -2586,11 +2586,11 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Hostile
+                          owl:someValuesFrom :Hostile
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
-                          owl:allValuesFrom :CrimsonForest
+                          owl:someValuesFrom :CrimsonForest
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
@@ -2604,7 +2604,7 @@
              rdfs:subClassOf :Item ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
-                               owl:allValuesFrom :Common
+                               owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :craftsInto ;
@@ -2623,18 +2623,18 @@
        rdfs:subClassOf :Animal ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
-                         owl:allValuesFrom :Passive
+                         owl:someValuesFrom :Passive
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
-                         owl:allValuesFrom [ rdf:type owl:Class ;
-                                             owl:unionOf ( :Plains
-                                                           :Savanna
-                                                           :SavannaPlateau
-                                                           :SunflowerPlains
-                                                           :WindsweptSavanna
-                                                         )
-                                           ]
+                         owl:someValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :Plains
+                                                            :Savanna
+                                                            :SavannaPlateau
+                                                            :SunflowerPlains
+                                                            :WindsweptSavanna
+                                                          )
+                                            ]
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
@@ -2656,6 +2656,15 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Hostile
 :Hostile rdf:type owl:Class ;
          rdfs:subClassOf :Behavior .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/HostileMob
+:HostileMob rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty :behaves ;
+                                  owl:someValuesFrom :Hostile
+                                ] ;
+            rdfs:subClassOf :Mob .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Husk
@@ -2710,11 +2719,11 @@
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :behaves ;
-                        owl:allValuesFrom :Hostile
+                        owl:someValuesFrom :Hostile
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :spawnsIn ;
-                        owl:allValuesFrom :Desert
+                        owl:someValuesFrom :Desert
                       ] .
 
 
@@ -2737,7 +2746,7 @@
         rdfs:subClassOf :Item ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
-                          owl:allValuesFrom :Common
+                          owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :craftsInto ;
@@ -2779,11 +2788,11 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :behaves ;
-                             owl:allValuesFrom :Neutral
+                             owl:someValuesFrom :Neutral
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
-                             owl:allValuesFrom :OverworldBiome
+                             owl:someValuesFrom :OverworldBiome
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -2828,7 +2837,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :craftsInto ;
@@ -2847,7 +2856,7 @@
             rdfs:subClassOf :Iron ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
-                              owl:allValuesFrom :Common
+                              owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :craftedWith ;
@@ -2866,11 +2875,11 @@
          rdfs:subClassOf :Iron ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :harvestedWith ;
-                           owl:allValuesFrom :Pickaxe
+                           owl:someValuesFrom :Pickaxe
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :rarity ;
-                           owl:allValuesFrom :Common
+                           owl:someValuesFrom :Common
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
@@ -2906,7 +2915,7 @@
          rdfs:subClassOf :Item ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :rarity ;
-                           owl:allValuesFrom :Common
+                           owl:someValuesFrom :Common
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :craftedWith ;
@@ -2930,7 +2939,7 @@
                  rdfs:subClassOf :Flower ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :rarity ;
-                                   owl:allValuesFrom :Common
+                                   owl:someValuesFrom :Common
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :stackSize ;
@@ -2945,7 +2954,7 @@
                                  :Throwable ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :craftedWith ;
-                                   owl:allValuesFrom :SplashPotion
+                                   owl:someValuesFrom :SplashPotion
                                  ] .
 
 
@@ -2992,18 +3001,18 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
-                         owl:allValuesFrom :Neutral
+                         owl:someValuesFrom :Neutral
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
-                         owl:allValuesFrom [ rdf:type owl:Class ;
-                                             owl:unionOf ( :SavannaPlateau
-                                                           :WindsweptForest
-                                                           :WindsweptGravellyHills
-                                                           :WindsweptHills
-                                                           :WindsweptSavanna
-                                                         )
-                                           ]
+                         owl:someValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :SavannaPlateau
+                                                            :WindsweptForest
+                                                            :WindsweptGravellyHills
+                                                            :WindsweptHills
+                                                            :WindsweptSavanna
+                                                          )
+                                            ]
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
@@ -3018,11 +3027,11 @@
                      :Item ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :harvestedWith ;
-                       owl:allValuesFrom :Axe
+                       owl:someValuesFrom :Axe
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :rarity ;
-                       owl:allValuesFrom :Common
+                       owl:someValuesFrom :Common
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :craftsInto ;
@@ -3064,7 +3073,7 @@
             rdfs:subClassOf :Item ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
-                              owl:allValuesFrom :Common
+                              owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
@@ -3096,15 +3105,15 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :behaves ;
-                             owl:allValuesFrom :Hostile
+                             owl:someValuesFrom :Hostile
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
-                             owl:allValuesFrom [ rdf:type owl:Class ;
-                                                 owl:unionOf ( :BasaltDeltas
-                                                               :NetherWastes
-                                                             )
-                                               ]
+                             owl:someValuesFrom [ rdf:type owl:Class ;
+                                                  owl:unionOf ( :BasaltDeltas
+                                                                :NetherWastes
+                                                              )
+                                                ]
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -3142,7 +3151,7 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Monster
 :Monster rdf:type owl:Class ;
-         rdfs:subClassOf :Mob .
+         rdfs:subClassOf :Item .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Mooshroom
@@ -3150,11 +3159,11 @@
            rdfs:subClassOf :Animal ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :behaves ;
-                             owl:allValuesFrom :Passive
+                             owl:someValuesFrom :Passive
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
-                             owl:allValuesFrom :MushroomFields
+                             owl:someValuesFrom :MushroomFields
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -3183,7 +3192,7 @@
       rdfs:subClassOf :Animal ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :behaves ;
-                        owl:allValuesFrom :Passive
+                        owl:someValuesFrom :Passive
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :dropsItem ;
@@ -3217,22 +3226,22 @@
                           :Aquatic ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :behaves ;
-                            owl:allValuesFrom :Neutral
+                            owl:someValuesFrom :Neutral
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :spawnsIn ;
-                            owl:allValuesFrom [ rdf:type owl:Class ;
-                                                owl:unionOf ( :ColdOcean
-                                                              :DeepColdOcean
-                                                              :DeepFrozenOcean
-                                                              :DeepLukewarmOcean
-                                                              :DeepOcean
-                                                              :FrozenOcean
-                                                              :LukewarmOcean
-                                                              :Ocean
-                                                              :WarmOcean
-                                                            )
-                                              ]
+                            owl:someValuesFrom [ rdf:type owl:Class ;
+                                                 owl:unionOf ( :ColdOcean
+                                                               :DeepColdOcean
+                                                               :DeepFrozenOcean
+                                                               :DeepLukewarmOcean
+                                                               :DeepOcean
+                                                               :FrozenOcean
+                                                               :LukewarmOcean
+                                                               :Ocean
+                                                               :WarmOcean
+                                                             )
+                                               ]
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :dropsItem ;
@@ -3251,7 +3260,7 @@
                rdfs:subClassOf :Item ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :rarity ;
-                                 owl:allValuesFrom :Uncommon
+                                 owl:someValuesFrom :Uncommon
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :stackSize ;
@@ -3274,7 +3283,7 @@
             rdfs:subClassOf :Item ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
-                              owl:allValuesFrom :Rare
+                              owl:someValuesFrom :Rare
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
@@ -3317,11 +3326,11 @@
                         :Monster ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Passive
+                          owl:someValuesFrom :Passive
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
-                          owl:allValuesFrom :Jungle
+                          owl:someValuesFrom :Jungle
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -3390,15 +3399,15 @@
        rdfs:subClassOf :Animal ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
-                         owl:allValuesFrom :Neutral
+                         owl:someValuesFrom :Neutral
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
-                         owl:allValuesFrom [ rdf:type owl:Class ;
-                                             owl:unionOf ( :BambooJungle
-                                                           :Jungle
-                                                         )
-                                           ]
+                         owl:someValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :BambooJungle
+                                                            :Jungle
+                                                          )
+                                            ]
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
@@ -3436,11 +3445,11 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :behaves ;
-                           owl:allValuesFrom :Hostile
+                           owl:someValuesFrom :Hostile
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
-                           owl:allValuesFrom :Desert
+                           owl:someValuesFrom :Desert
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
@@ -3454,11 +3463,11 @@
         rdfs:subClassOf :Animal ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Passive
+                          owl:someValuesFrom :Passive
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
-                          owl:allValuesFrom :Jungle
+                          owl:someValuesFrom :Jungle
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -3488,11 +3497,11 @@
                          :Undead ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :behaves ;
-                           owl:allValuesFrom :Hostile
+                           owl:someValuesFrom :Hostile
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
-                           owl:allValuesFrom :OverworldBiome
+                           owl:someValuesFrom :OverworldBiome
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -3511,7 +3520,7 @@
                  rdfs:subClassOf :Item ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :rarity ;
-                                   owl:allValuesFrom :Common
+                                   owl:someValuesFrom :Common
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :stackSize ;
@@ -3530,11 +3539,11 @@
      rdfs:subClassOf :Animal ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :behaves ;
-                       owl:allValuesFrom :Passive
+                       owl:someValuesFrom :Passive
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :spawnsIn ;
-                       owl:allValuesFrom :OverworldBiome
+                       owl:someValuesFrom :OverworldBiome
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
@@ -3558,15 +3567,15 @@
         rdfs:subClassOf :Monster ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Neutral
+                          owl:someValuesFrom :Neutral
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
-                          owl:allValuesFrom [ rdf:type owl:Class ;
-                                              owl:unionOf ( :CrimsonForest
-                                                            :NetherWastes
-                                                          )
-                                            ]
+                          owl:someValuesFrom [ rdf:type owl:Class ;
+                                               owl:unionOf ( :CrimsonForest
+                                                             :NetherWastes
+                                                           )
+                                             ]
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -3585,11 +3594,11 @@
              rdfs:subClassOf :Monster ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :behaves ;
-                               owl:allValuesFrom :Hostile
+                               owl:someValuesFrom :Hostile
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :spawnsIn ;
-                               owl:allValuesFrom :NetherBiome
+                               owl:someValuesFrom :NetherBiome
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :dropsItem ;
@@ -3627,11 +3636,11 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :behaves ;
-                            owl:allValuesFrom :Hostile
+                            owl:someValuesFrom :Hostile
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :spawnsIn ;
-                            owl:allValuesFrom :OverworldBiome
+                            owl:someValuesFrom :OverworldBiome
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :health ;
@@ -3655,7 +3664,7 @@
                        :Item ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :harvestedWith ;
-                         owl:allValuesFrom :Axe
+                         owl:someValuesFrom :Axe
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :craftedWith ;
@@ -3697,17 +3706,17 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :behaves ;
-                             owl:allValuesFrom :Neutral
+                             owl:someValuesFrom :Neutral
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
-                             owl:allValuesFrom [ rdf:type owl:Class ;
-                                                 owl:unionOf ( :DeepFrozenOcean
-                                                               :FrozenOcean
-                                                               :IceSpikes
-                                                               :SnowyPlains
-                                                             )
-                                               ]
+                             owl:someValuesFrom [ rdf:type owl:Class ;
+                                                  owl:unionOf ( :DeepFrozenOcean
+                                                                :FrozenOcean
+                                                                :IceSpikes
+                                                                :SnowyPlains
+                                                              )
+                                                ]
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :health ;
@@ -3721,7 +3730,7 @@
        rdfs:subClassOf :Flower ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :rarity ;
-                         owl:allValuesFrom :Common
+                         owl:someValuesFrom :Common
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
@@ -3735,7 +3744,7 @@
         rdfs:subClassOf :Crops ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
-                          owl:allValuesFrom :Common
+                          owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
@@ -3749,7 +3758,7 @@
         rdfs:subClassOf :Item ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
-                          owl:allValuesFrom :Common
+                          owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
@@ -3778,7 +3787,7 @@
                     rdfs:subClassOf :Item ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :rarity ;
-                                      owl:allValuesFrom :Common
+                                      owl:someValuesFrom :Common
                                     ] ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :stackSize ;
@@ -3792,7 +3801,7 @@
                  rdfs:subClassOf :Item ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :rarity ;
-                                   owl:allValuesFrom :Common
+                                   owl:someValuesFrom :Common
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :stackSize ;
@@ -3821,16 +3830,16 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :behaves ;
-                              owl:allValuesFrom :Neutral
+                              owl:someValuesFrom :Neutral
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :spawnsIn ;
-                              owl:allValuesFrom [ rdf:type owl:Class ;
-                                                  owl:unionOf ( :DeepLukewarmOcean
-                                                                :LukewarmOcean
-                                                                :WarmOcean
-                                                              )
-                                                ]
+                              owl:someValuesFrom [ rdf:type owl:Class ;
+                                                   owl:unionOf ( :DeepLukewarmOcean
+                                                                 :LukewarmOcean
+                                                                 :WarmOcean
+                                                               )
+                                                 ]
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :health ;
@@ -3844,26 +3853,26 @@
         rdfs:subClassOf :Animal ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Passive
+                          owl:someValuesFrom :Passive
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
-                          owl:allValuesFrom [ rdf:type owl:Class ;
-                                              owl:unionOf ( :CherryGrove
-                                                            :DeepDark
-                                                            :Desert
-                                                            :FlowerForest
-                                                            :Grove
-                                                            :IceSpikes
-                                                            :Meadow
-                                                            :OldGrowthPineTaiga
-                                                            :OldGrowthSpruceTaiga
-                                                            :SnowyPlains
-                                                            :SnowySlopes
-                                                            :SnowyTaiga
-                                                            :Taiga
-                                                          )
-                                            ]
+                          owl:someValuesFrom [ rdf:type owl:Class ;
+                                               owl:unionOf ( :CherryGrove
+                                                             :DeepDark
+                                                             :Desert
+                                                             :FlowerForest
+                                                             :Grove
+                                                             :IceSpikes
+                                                             :Meadow
+                                                             :OldGrowthPineTaiga
+                                                             :OldGrowthSpruceTaiga
+                                                             :SnowyPlains
+                                                             :SnowySlopes
+                                                             :SnowyTaiga
+                                                             :Taiga
+                                                           )
+                                             ]
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -3892,7 +3901,7 @@
             rdfs:subClassOf :Item ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
-                              owl:allValuesFrom :Common
+                              owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
@@ -3906,7 +3915,7 @@
              rdfs:subClassOf :Item ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
-                               owl:allValuesFrom :Common
+                               owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
@@ -3929,11 +3938,11 @@
          rdfs:subClassOf :Monster ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :behaves ;
-                           owl:allValuesFrom :Hostile
+                           owl:someValuesFrom :Hostile
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
-                           owl:allValuesFrom :OverworldBiome
+                           owl:someValuesFrom :OverworldBiome
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -3952,7 +3961,7 @@
          rdfs:subClassOf :Eatable ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :rarity ;
-                           owl:allValuesFrom :Common
+                           owl:someValuesFrom :Common
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
@@ -3966,7 +3975,7 @@
             rdfs:subClassOf :Eatable ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
-                              owl:allValuesFrom :Common
+                              owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
@@ -3980,7 +3989,7 @@
         rdfs:subClassOf :Eatable ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
-                          owl:allValuesFrom :Common
+                          owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
@@ -3994,7 +4003,7 @@
            rdfs:subClassOf :Copper ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
@@ -4008,7 +4017,7 @@
          rdfs:subClassOf :Gold ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :rarity ;
-                           owl:allValuesFrom :Common
+                           owl:someValuesFrom :Common
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
@@ -4022,7 +4031,7 @@
          rdfs:subClassOf :Iron ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :rarity ;
-                           owl:allValuesFrom :Common
+                           owl:someValuesFrom :Common
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
@@ -4036,7 +4045,7 @@
            rdfs:subClassOf :Eatable ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
@@ -4050,7 +4059,7 @@
              rdfs:subClassOf :Eatable ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
-                               owl:allValuesFrom :Common
+                               owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
@@ -4064,7 +4073,7 @@
            rdfs:subClassOf :Eatable ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
@@ -4078,7 +4087,7 @@
            rdfs:subClassOf :Eatable ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
@@ -4115,7 +4124,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
-                          owl:allValuesFrom :Common
+                          owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
@@ -4129,7 +4138,7 @@
              rdfs:subClassOf :Item ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
-                               owl:allValuesFrom :Common
+                               owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
@@ -4143,7 +4152,7 @@
           rdfs:subClassOf :Flower ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :rarity ;
-                            owl:allValuesFrom :Common
+                            owl:someValuesFrom :Common
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
@@ -4171,11 +4180,11 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :harvestedWith ;
-                           owl:allValuesFrom :Shears
+                           owl:someValuesFrom :Shears
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :rarity ;
-                           owl:allValuesFrom :Common
+                           owl:someValuesFrom :Common
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -4195,11 +4204,11 @@
                                :Item ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :harvestedWith ;
-                                 owl:allValuesFrom :Pickaxe
+                                 owl:someValuesFrom :Pickaxe
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :rarity ;
-                                 owl:allValuesFrom :Common
+                                 owl:someValuesFrom :Common
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :craftedWith ;
@@ -4228,7 +4237,7 @@
               rdfs:subClassOf :Item ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :rarity ;
-                                owl:allValuesFrom :Common
+                                owl:someValuesFrom :Common
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :craftedWith ;
@@ -4256,7 +4265,7 @@
           rdfs:subClassOf :Flower ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :rarity ;
-                            owl:allValuesFrom :Common
+                            owl:someValuesFrom :Common
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :craftsInto ;
@@ -4275,7 +4284,7 @@
              rdfs:subClassOf :Eatable ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
-                               owl:allValuesFrom :Common
+                               owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
@@ -4289,7 +4298,7 @@
         rdfs:subClassOf :Item ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
-                          owl:allValuesFrom :Common
+                          owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
@@ -4303,19 +4312,19 @@
         rdfs:subClassOf :Animal ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Passive
+                          owl:someValuesFrom :Passive
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
-                          owl:allValuesFrom [ rdf:type owl:Class ;
-                                              owl:unionOf ( :ColdOcean
-                                                            :DeepColdOcean
-                                                            :DeepFrozenOcean
-                                                            :FrozenOcean
-                                                            :FrozenRiver
-                                                            :River
-                                                          )
-                                            ]
+                          owl:someValuesFrom [ rdf:type owl:Class ;
+                                               owl:unionOf ( :ColdOcean
+                                                             :DeepColdOcean
+                                                             :DeepFrozenOcean
+                                                             :FrozenOcean
+                                                             :FrozenRiver
+                                                             :River
+                                                           )
+                                             ]
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -4358,11 +4367,11 @@
                                :Item ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :harvestedWith ;
-                                 owl:allValuesFrom :Hoe
+                                 owl:someValuesFrom :Hoe
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :rarity ;
-                                 owl:allValuesFrom :Common
+                                 owl:someValuesFrom :Common
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :dropsItem ;
@@ -4381,7 +4390,7 @@
           rdfs:subClassOf :Item ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :rarity ;
-                            owl:allValuesFrom :Common
+                            owl:someValuesFrom :Common
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
@@ -4395,7 +4404,7 @@
         rdfs:subClassOf :Tool ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
-                          owl:allValuesFrom :Common
+                          owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :craftedWith ;
@@ -4419,11 +4428,11 @@
        rdfs:subClassOf :Animal ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
-                         owl:allValuesFrom :Passive
+                         owl:someValuesFrom :Passive
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
-                         owl:allValuesFrom :OverworldBiome
+                         owl:someValuesFrom :OverworldBiome
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
@@ -4457,11 +4466,11 @@
          rdfs:subClassOf :Monster ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :behaves ;
-                           owl:allValuesFrom :Hostile
+                           owl:someValuesFrom :Hostile
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
-                           owl:allValuesFrom :EndBiome
+                           owl:someValuesFrom :EndBiome
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -4480,7 +4489,7 @@
               rdfs:subClassOf :Item ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :rarity ;
-                                owl:allValuesFrom :Common
+                                owl:someValuesFrom :Common
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :stackSize ;
@@ -4495,11 +4504,11 @@
                             :Monster ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :behaves ;
-                              owl:allValuesFrom :Hostile
+                              owl:someValuesFrom :Hostile
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :spawnsIn ;
-                              owl:allValuesFrom :OverworldBiome
+                              owl:someValuesFrom :OverworldBiome
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :dropsItem ;
@@ -4532,15 +4541,15 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :behaves ;
-                            owl:allValuesFrom :Hostile
+                            owl:someValuesFrom :Hostile
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :spawnsIn ;
-                            owl:allValuesFrom [ rdf:type owl:Class ;
-                                                owl:unionOf ( :OverworldBiome
-                                                              :SouldSandValley
-                                                            )
-                                              ]
+                            owl:someValuesFrom [ rdf:type owl:Class ;
+                                                 owl:unionOf ( :OverworldBiome
+                                                               :SouldSandValley
+                                                             )
+                                               ]
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :health ;
@@ -4556,7 +4565,7 @@
                                :Undead ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :behaves ;
-                                 owl:allValuesFrom :Passive
+                                 owl:someValuesFrom :Passive
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :dropsItem ;
@@ -4598,15 +4607,15 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
-                         owl:allValuesFrom :Hostile
+                         owl:someValuesFrom :Hostile
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
-                         owl:allValuesFrom [ rdf:type owl:Class ;
-                                             owl:unionOf ( :MangroveSwamp
-                                                           :Swamp
-                                                         )
-                                           ]
+                         owl:someValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :MangroveSwamp
+                                                            :Swamp
+                                                          )
+                                            ]
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
@@ -4621,7 +4630,7 @@
                             :Item ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
-                              owl:allValuesFrom :Common
+                              owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :craftedWith ;
@@ -4645,7 +4654,7 @@
            rdfs:subClassOf :Item ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :craftedWith ;
@@ -4673,7 +4682,7 @@
          rdfs:subClassOf :Animal ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :behaves ;
-                           owl:allValuesFrom :Passive
+                           owl:someValuesFrom :Passive
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -4692,7 +4701,7 @@
            rdfs:subClassOf :Golem ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :behaves ;
-                             owl:allValuesFrom :Passive
+                             owl:someValuesFrom :Passive
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -4711,7 +4720,7 @@
           rdfs:subClassOf :Throwable ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :rarity ;
-                            owl:allValuesFrom :Common
+                            owl:someValuesFrom :Common
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
@@ -4780,7 +4789,7 @@
                         :Monster ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Neutral
+                          owl:someValuesFrom :Neutral
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -4804,7 +4813,7 @@
            rdfs:subClassOf :Eatable ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
@@ -4819,7 +4828,7 @@
                               :Throwable ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :craftedWith ;
-                                owl:allValuesFrom :BottledPotion
+                                owl:someValuesFrom :BottledPotion
                               ] .
 
 
@@ -4867,24 +4876,24 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
-                         owl:allValuesFrom :Passive
+                         owl:someValuesFrom :Passive
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
-                         owl:allValuesFrom [ rdf:type owl:Class ;
-                                             owl:unionOf ( :ColdOcean
-                                                           :DeepColdOcean
-                                                           :DeepFrozenOcean
-                                                           :DeepLukewarmOcean
-                                                           :DeepOcean
-                                                           :FrozenOcean
-                                                           :FrozenRiver
-                                                           :LukewarmOcean
-                                                           :Ocean
-                                                           :River
-                                                           :WarmOcean
-                                                         )
-                                           ]
+                         owl:someValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :ColdOcean
+                                                            :DeepColdOcean
+                                                            :DeepFrozenOcean
+                                                            :DeepLukewarmOcean
+                                                            :DeepOcean
+                                                            :FrozenOcean
+                                                            :FrozenRiver
+                                                            :LukewarmOcean
+                                                            :Ocean
+                                                            :River
+                                                            :WarmOcean
+                                                          )
+                                            ]
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
@@ -4911,7 +4920,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :rarity ;
-                         owl:allValuesFrom :Common
+                         owl:someValuesFrom :Common
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
@@ -4971,15 +4980,15 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
-                         owl:allValuesFrom :Hostile
+                         owl:someValuesFrom :Hostile
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
-                         owl:allValuesFrom [ rdf:type owl:Class ;
-                                             owl:unionOf ( :IceSpikes
-                                                           :SnowyPlains
-                                                         )
-                                           ]
+                         owl:someValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :IceSpikes
+                                                            :SnowyPlains
+                                                          )
+                                            ]
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
@@ -5006,11 +5015,11 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :behaves ;
-                           owl:allValuesFrom :Passive
+                           owl:someValuesFrom :Passive
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
-                           owl:allValuesFrom :NetherBiome
+                           owl:someValuesFrom :NetherBiome
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
@@ -5029,7 +5038,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
-                          owl:allValuesFrom :Common
+                          owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -5061,7 +5070,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :rarity ;
-                         owl:allValuesFrom :Common
+                         owl:someValuesFrom :Common
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
@@ -5076,7 +5085,7 @@
                            :NotFullBlock ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :craftsInto ;
@@ -5118,11 +5127,11 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :behaves ;
-                              owl:allValuesFrom :Passive
+                              owl:someValuesFrom :Passive
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :spawnsIn ;
-                              owl:allValuesFrom :SulfurCaves
+                              owl:someValuesFrom :SulfurCaves
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :dropsItem ;
@@ -5160,7 +5169,7 @@
                          :Aquatic ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :behaves ;
-                           owl:allValuesFrom :Passive
+                           owl:someValuesFrom :Passive
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -5248,11 +5257,11 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :behaves ;
-                              owl:allValuesFrom :Neutral
+                              owl:someValuesFrom :Neutral
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :spawnsIn ;
-                              owl:allValuesFrom :OverworldBiome
+                              owl:someValuesFrom :OverworldBiome
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :dropsItem ;
@@ -5266,7 +5275,7 @@
          rdfs:subClassOf :Weapon ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :rarity ;
-                           owl:allValuesFrom :Rare
+                           owl:someValuesFrom :Rare
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
@@ -5282,22 +5291,22 @@
                               :Eatable ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :behaves ;
-                                owl:allValuesFrom :Passive
+                                owl:someValuesFrom :Passive
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :rarity ;
-                                owl:allValuesFrom :Common
+                                owl:someValuesFrom :Common
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :spawnsIn ;
-                                owl:allValuesFrom [ rdf:type owl:Class ;
-                                                    owl:unionOf ( :DeepLukewarmOcean
-                                                                  :LukewarmOcean
-                                                                  :LushCaves
-                                                                  :MangroveSwamp
-                                                                  :WarmOcean
-                                                                )
-                                                  ]
+                                owl:someValuesFrom [ rdf:type owl:Class ;
+                                                     owl:unionOf ( :DeepLukewarmOcean
+                                                                   :LukewarmOcean
+                                                                   :LushCaves
+                                                                   :MangroveSwamp
+                                                                   :WarmOcean
+                                                                 )
+                                                   ]
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :dropsItem ;
@@ -5327,11 +5336,11 @@
                         :Aquatic ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Passive
+                          owl:someValuesFrom :Passive
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
-                          owl:allValuesFrom :Beach
+                          owl:someValuesFrom :Beach
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -5365,7 +5374,7 @@
      rdfs:subClassOf :Monster ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :behaves ;
-                       owl:allValuesFrom :Hostile
+                       owl:someValuesFrom :Hostile
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
@@ -5384,21 +5393,21 @@
           rdfs:subClassOf :Mob ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :behaves ;
-                            owl:allValuesFrom :Passive
+                            owl:someValuesFrom :Passive
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :spawnsIn ;
-                            owl:allValuesFrom [ rdf:type owl:Class ;
-                                                owl:unionOf ( :Desert
-                                                              :Meadow
-                                                              :Plains
-                                                              :Savanna
-                                                              :SnowyPlains
-                                                              :SnowyTaiga
-                                                              :SunflowerPlains
-                                                              :Taiga
-                                                            )
-                                              ]
+                            owl:someValuesFrom [ rdf:type owl:Class ;
+                                                 owl:unionOf ( :Desert
+                                                               :Meadow
+                                                               :Plains
+                                                               :Savanna
+                                                               :SnowyPlains
+                                                               :SnowyTaiga
+                                                               :SunflowerPlains
+                                                               :Taiga
+                                                             )
+                                               ]
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :dropsItem ;
@@ -5418,11 +5427,11 @@
                             :Monster ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :behaves ;
-                              owl:allValuesFrom :Hostile
+                              owl:someValuesFrom :Hostile
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :dropsItem ;
-                              owl:allValuesFrom :OverworldBiome
+                              owl:someValuesFrom :OverworldBiome
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :dropsItem ;
@@ -5440,12 +5449,12 @@
 :WanderingTrader rdf:type owl:Class ;
                  rdfs:subClassOf :Mob ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :spawnsIn ;
-                                   owl:someValuesFrom :Biome
+                                   owl:onProperty :behaves ;
+                                   owl:someValuesFrom :Passive
                                  ] ,
                                  [ rdf:type owl:Restriction ;
-                                   owl:onProperty :behaves ;
-                                   owl:allValuesFrom :Passive
+                                   owl:onProperty :spawnsIn ;
+                                   owl:someValuesFrom :Biome
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :dropsItem ;
@@ -5465,11 +5474,11 @@
                         :Monster ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Hostile
+                          owl:someValuesFrom :Hostile
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
-                          owl:allValuesFrom :DeepDark
+                          owl:someValuesFrom :DeepDark
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -5522,7 +5531,7 @@
                            :Item ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :harvestedWith ;
-                             owl:allValuesFrom :Hoe
+                             owl:someValuesFrom :Hoe
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -5541,7 +5550,7 @@
        rdfs:subClassOf :Crops ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :rarity ;
-                         owl:allValuesFrom :Common
+                         owl:someValuesFrom :Common
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
@@ -5568,7 +5577,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :rarity ;
-                            owl:allValuesFrom :Common
+                            owl:someValuesFrom :Common
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
@@ -5604,11 +5613,11 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :harvestedWith ;
-                             owl:allValuesFrom :Shears
+                             owl:someValuesFrom :Shears
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
-                             owl:allValuesFrom :Common
+                             owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -5627,7 +5636,7 @@
             rdfs:subClassOf :Item ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
-                              owl:allValuesFrom :Common
+                              owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :craftedWith ;
@@ -5728,11 +5737,11 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
-                         owl:allValuesFrom :Hostile
+                         owl:someValuesFrom :Hostile
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
-                         owl:allValuesFrom :OverworldBiome
+                         owl:someValuesFrom :OverworldBiome
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
@@ -5747,12 +5756,12 @@
                         :Monster ,
                         :Undead ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :spawnsIn ;
-                          owl:someValuesFrom :Biome
+                          owl:onProperty :behaves ;
+                          owl:someValuesFrom :Hostile
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :behaves ;
-                          owl:allValuesFrom :Hostile
+                          owl:onProperty :spawnsIn ;
+                          owl:someValuesFrom :Biome
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -5771,7 +5780,7 @@
             rdfs:subClassOf :Flower ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
-                              owl:allValuesFrom :Common
+                              owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :craftsInto ;
@@ -5809,11 +5818,11 @@
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :behaves ;
-                                  owl:allValuesFrom :Hostile
+                                  owl:someValuesFrom :Hostile
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :spawnsIn ;
-                                  owl:allValuesFrom :NetherBiome
+                                  owl:someValuesFrom :NetherBiome
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :health ;
@@ -5828,11 +5837,11 @@
                                      :NotFullBlock ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :harvestedWith ;
-                                       owl:allValuesFrom :Tool
+                                       owl:someValuesFrom :Tool
                                      ] ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :rarity ;
-                                       owl:allValuesFrom :Rare
+                                       owl:someValuesFrom :Rare
                                      ] ,
                                      [ rdf:type owl:Restriction ;
                                        owl:onProperty :dropsItem ;
@@ -5851,22 +5860,22 @@
       rdfs:subClassOf :Animal ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :behaves ;
-                        owl:allValuesFrom :Neutral
+                        owl:someValuesFrom :Neutral
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :spawnsIn ;
-                        owl:allValuesFrom [ rdf:type owl:Class ;
-                                            owl:unionOf ( :Forest
-                                                          :Grove
-                                                          :OldGrowthPineTaiga
-                                                          :OldGrowthSpruceTaiga
-                                                          :SavannaPlateau
-                                                          :SnowyTaiga
-                                                          :SparseJungle
-                                                          :Taiga
-                                                          :WoodedBadlands
-                                                        )
-                                          ]
+                        owl:someValuesFrom [ rdf:type owl:Class ;
+                                             owl:unionOf ( :Forest
+                                                           :Grove
+                                                           :OldGrowthPineTaiga
+                                                           :OldGrowthSpruceTaiga
+                                                           :SavannaPlateau
+                                                           :SnowyTaiga
+                                                           :SparseJungle
+                                                           :Taiga
+                                                           :WoodedBadlands
+                                                         )
+                                           ]
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :dropsItem ;
@@ -5913,7 +5922,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Hostile
+                          owl:someValuesFrom :Hostile
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
@@ -5974,11 +5983,11 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
-                          owl:allValuesFrom :Hostile
+                          owl:someValuesFrom :Hostile
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
-                          owl:allValuesFrom :OverworldBiome
+                          owl:someValuesFrom :OverworldBiome
                         ] .
 
 
@@ -6002,19 +6011,19 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :behaves ;
-                               owl:allValuesFrom :Passive
+                               owl:someValuesFrom :Passive
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :spawnsIn ;
-                               owl:allValuesFrom [ rdf:type owl:Class ;
-                                                   owl:unionOf ( :Plains
-                                                                 :Savanna
-                                                                 :SavannaPlateau
-                                                                 :SnowyPlains
-                                                                 :SunflowerPlains
-                                                                 :WindsweptSavanna
-                                                               )
-                                                 ]
+                               owl:someValuesFrom [ rdf:type owl:Class ;
+                                                    owl:unionOf ( :Plains
+                                                                  :Savanna
+                                                                  :SavannaPlateau
+                                                                  :SnowyPlains
+                                                                  :SunflowerPlains
+                                                                  :WindsweptSavanna
+                                                                )
+                                                  ]
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :health ;
@@ -6031,23 +6040,23 @@
                                 :Undead ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :behaves ;
-                                  owl:allValuesFrom :Neutral
+                                  owl:someValuesFrom :Neutral
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :spawnsIn ;
-                                  owl:allValuesFrom [ rdf:type owl:Class ;
-                                                      owl:unionOf ( :ColdOcean
-                                                                    :DeepColdOcean
-                                                                    :DeepFrozenOcean
-                                                                    :DeepLukewarmOcean
-                                                                    :DeepOcean
-                                                                    :DripstoneCaves
-                                                                    :FrozenOcean
-                                                                    :LukewarmOcean
-                                                                    :Ocean
-                                                                    :WarmOcean
-                                                                  )
-                                                    ]
+                                  owl:someValuesFrom [ rdf:type owl:Class ;
+                                                       owl:unionOf ( :ColdOcean
+                                                                     :DeepColdOcean
+                                                                     :DeepFrozenOcean
+                                                                     :DeepLukewarmOcean
+                                                                     :DeepOcean
+                                                                     :DripstoneCaves
+                                                                     :FrozenOcean
+                                                                     :LukewarmOcean
+                                                                     :Ocean
+                                                                     :WarmOcean
+                                                                   )
+                                                     ]
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :dropsItem ;
@@ -6108,7 +6117,7 @@
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :behaves ;
-                                  owl:allValuesFrom :Hostile
+                                  owl:someValuesFrom :Hostile
                                 ] .
 
 
@@ -6154,15 +6163,15 @@
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :behaves ;
-                                    owl:allValuesFrom :Neutral
+                                    owl:someValuesFrom :Neutral
                                   ] ,
                                   [ rdf:type owl:Restriction ;
                                     owl:onProperty :spawnsIn ;
-                                    owl:allValuesFrom [ rdf:type owl:Class ;
-                                                        owl:unionOf ( :CrimsonForest
-                                                                      :NetherWastes
-                                                                    )
-                                                      ]
+                                    owl:someValuesFrom [ rdf:type owl:Class ;
+                                                         owl:unionOf ( :CrimsonForest
+                                                                       :NetherWastes
+                                                                     )
+                                                       ]
                                   ] .
 
 
@@ -6181,11 +6190,11 @@
                       :Monster ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :behaves ;
-                        owl:allValuesFrom :Hostile
+                        owl:someValuesFrom :Hostile
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :spawnsIn ;
-                        owl:allValuesFrom :TheEnd
+                        owl:someValuesFrom :TheEnd
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :dropsItem ;

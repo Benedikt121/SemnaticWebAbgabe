@@ -48,12 +48,6 @@
                rdfs:range :Tool .
 
 
-###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/hasMob
-:hasMob rdf:type owl:ObjectProperty ;
-        rdfs:subPropertyOf owl:topObjectProperty ;
-        owl:inverseOf :spawnsIn .
-
-
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/inDimension
 :inDimension rdf:type owl:ObjectProperty ;
              rdfs:domain :Biome ;
@@ -117,6 +111,15 @@
 #    Classes
 #################################################################
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#ToolMaterial
+:ToolMaterial rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :craftsInto ;
+                                    owl:someValuesFrom :Tool
+                                  ] ;
+              rdfs:subClassOf :Item .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Allay
 :Allay rdf:type owl:Class ;
        rdfs:subClassOf :Mob ,
@@ -163,6 +166,17 @@
                                                                 :WoodedBadlands
                                                               )
                                                 ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :spawnsIn ;
+                             owl:allValuesFrom [ rdf:type owl:Class ;
+                                                 owl:unionOf ( :Badlands
+                                                               :ErodedBadlands
+                                                               :Savanna
+                                                               :SavannaPlateau
+                                                               :WoodedBadlands
+                                                             )
+                                               ]
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -318,6 +332,10 @@
                            owl:someValuesFrom :LushCaves
                          ] ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :spawnsIn ;
+                           owl:allValuesFrom :LushCaves
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
                            owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                            owl:onClass :Item
@@ -388,6 +406,10 @@
                        owl:someValuesFrom :OverworldBiome
                      ] ,
                      [ rdf:type owl:Restriction ;
+                       owl:onProperty :spawnsIn ;
+                       owl:allValuesFrom :OverworldBiome
+                     ] ,
+                     [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
                        owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                        owl:onClass :Item
@@ -430,6 +452,21 @@
                                                           :SunflowerPlains
                                                         )
                                           ]
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :spawnsIn ;
+                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                           owl:unionOf ( :BirchForest
+                                                         :CherryGrove
+                                                         :FlowerForest
+                                                         :Forest
+                                                         :MangroveSwamp
+                                                         :Meadow
+                                                         :OldGrowthBirchForest
+                                                         :Plains
+                                                         :SunflowerPlains
+                                                       )
+                                         ]
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
@@ -548,6 +585,10 @@
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
                          owl:someValuesFrom :NetherBiome
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :spawnsIn ;
+                         owl:allValuesFrom :NetherBiome
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
@@ -794,6 +835,14 @@
                                              ]
                         ] ,
                         [ rdf:type owl:Restriction ;
+                          owl:onProperty :spawnsIn ;
+                          owl:allValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :MangroveSwamp
+                                                            :Swamp
+                                                          )
+                                            ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
                           owl:qualifiedCardinality "16"^^xsd:nonNegativeInteger ;
                           owl:onDataRange xsd:integer
@@ -977,6 +1026,10 @@
                          owl:someValuesFrom :Desert
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :spawnsIn ;
+                         owl:allValuesFrom :Desert
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
                          owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                          owl:onClass :Item
@@ -1000,6 +1053,10 @@
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
                              owl:someValuesFrom :Desert
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :spawnsIn ;
+                             owl:allValuesFrom :Desert
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -1056,6 +1113,22 @@
                                           ]
                      ] ,
                      [ rdf:type owl:Restriction ;
+                       owl:onProperty :spawnsIn ;
+                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                           owl:unionOf ( :Desert
+                                                         :Meadow
+                                                         :Plains
+                                                         :Savanna
+                                                         :SnowyPlains
+                                                         :SnowyTaiga
+                                                         :SunflowerPlains
+                                                         :Swamp
+                                                         :Taiga
+                                                         :TemperateBiome
+                                                       )
+                                         ]
+                     ] ,
+                     [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
                        owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
                        owl:onClass :String
@@ -1078,6 +1151,10 @@
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :spawnsIn ;
                               owl:someValuesFrom :OverworldBiome
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :spawnsIn ;
+                              owl:allValuesFrom :OverworldBiome
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :dropsItem ;
@@ -1120,6 +1197,10 @@
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
                            owl:someValuesFrom :OverworldBiome
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :spawnsIn ;
+                           owl:allValuesFrom :OverworldBiome
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -1180,6 +1261,18 @@
                                                           :Ocean
                                                         )
                                           ]
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :spawnsIn ;
+                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                           owl:unionOf ( :ColdOcean
+                                                         :DeepColdOcean
+                                                         :DeepLukewarmOcean
+                                                         :DeepOcean
+                                                         :LukewarmOcean
+                                                         :Ocean
+                                                       )
+                                         ]
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
@@ -1350,6 +1443,10 @@
                        owl:someValuesFrom :OverworldBiome
                      ] ,
                      [ rdf:type owl:Restriction ;
+                       owl:onProperty :spawnsIn ;
+                       owl:allValuesFrom :OverworldBiome
+                     ] ,
+                     [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                        owl:onClass :RawBeef
@@ -1383,6 +1480,10 @@
                             owl:someValuesFrom :PaleGarden
                           ] ,
                           [ rdf:type owl:Restriction ;
+                            owl:onProperty :spawnsIn ;
+                            owl:allValuesFrom :PaleGarden
+                          ] ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :dropsItem ;
                             owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                             owl:onClass :Item
@@ -1404,6 +1505,10 @@
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
                            owl:someValuesFrom :OverworldBiome
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :spawnsIn ;
+                           owl:allValuesFrom :OverworldBiome
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -1532,6 +1637,17 @@
                                               ]
                          ] ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :spawnsIn ;
+                           owl:allValuesFrom [ rdf:type owl:Class ;
+                                               owl:unionOf ( :DeepLukewarmOcean
+                                                             :DeepOcean
+                                                             :LukewarmOcean
+                                                             :Ocean
+                                                             :WarmOcean
+                                                           )
+                                             ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :RawCod
@@ -1561,6 +1677,18 @@
                                                              :WindsweptSavanna
                                                            )
                                              ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :spawnsIn ;
+                          owl:allValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :Meadow
+                                                            :Plains
+                                                            :Savanna
+                                                            :SavannaPlateau
+                                                            :SunflowerPlains
+                                                            :WindsweptSavanna
+                                                          )
+                                            ]
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -1636,6 +1764,23 @@
                                                               :WarmOcean
                                                             )
                                               ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :spawnsIn ;
+                           owl:allValuesFrom [ rdf:type owl:Class ;
+                                               owl:unionOf ( :ColdOcean
+                                                             :DeepColdOcean
+                                                             :DeepLukewarmOcean
+                                                             :DeepOcean
+                                                             :DripstoneCaves
+                                                             :FrozenOcean
+                                                             :FrozenRiver
+                                                             :LukewarmOcean
+                                                             :Ocean
+                                                             :River
+                                                             :WarmOcean
+                                                           )
+                                             ]
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -1749,6 +1894,16 @@
                                                                     :DeepOcean
                                                                   )
                                                     ]
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :spawnsIn ;
+                                 owl:allValuesFrom [ rdf:type owl:Class ;
+                                                     owl:unionOf ( :DeepColdOcean
+                                                                   :DeepFrozenOcean
+                                                                   :DeepLukewarmOcean
+                                                                   :DeepOcean
+                                                                 )
+                                                   ]
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :health ;
@@ -1871,6 +2026,17 @@
                                                                :WarpedForest
                                                              )
                                                ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :spawnsIn ;
+                            owl:allValuesFrom [ rdf:type owl:Class ;
+                                                owl:unionOf ( :EndBiome
+                                                              :NetherWastes
+                                                              :OverworldBiome
+                                                              :SouldSandValley
+                                                              :WarpedForest
+                                                            )
+                                              ]
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :dropsItem ;
@@ -2043,6 +2209,17 @@
                                           ]
                      ] ,
                      [ rdf:type owl:Restriction ;
+                       owl:onProperty :spawnsIn ;
+                       owl:allValuesFrom [ rdf:type owl:Class ;
+                                           owl:unionOf ( :Grove
+                                                         :OldGrowthPineTaiga
+                                                         :OldGrowthSpruceTaiga
+                                                         :SnowyTaiga
+                                                         :Taiga
+                                                       )
+                                         ]
+                     ] ,
+                     [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                        owl:onClass [ rdf:type owl:Class ;
@@ -2145,6 +2322,15 @@
                                             ]
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :spawnsIn ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:unionOf ( :BasaltDeltas
+                                                           :NetherWastes
+                                                           :SouldSandValley
+                                                         )
+                                           ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
                          owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
                          owl:onDataRange xsd:integer
@@ -2206,6 +2392,10 @@
                              owl:someValuesFrom :OverworldBiome
                            ] ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :spawnsIn ;
+                             owl:allValuesFrom :OverworldBiome
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
                              owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                              owl:onClass :GlowInkSac
@@ -2251,6 +2441,15 @@
                                                            :SnowySlopes
                                                          )
                                            ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :spawnsIn ;
+                        owl:allValuesFrom [ rdf:type owl:Class ;
+                                            owl:unionOf ( :FrozenPeaks
+                                                          :JaggedPeaks
+                                                          :SnowySlopes
+                                                        )
+                                          ]
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :dropsItem ;
@@ -2500,6 +2699,16 @@
                                                ]
                           ] ,
                           [ rdf:type owl:Restriction ;
+                            owl:onProperty :spawnsIn ;
+                            owl:allValuesFrom [ rdf:type owl:Class ;
+                                                owl:unionOf ( :DeepColdOcean
+                                                              :DeepFrozenOcean
+                                                              :DeepLukewarmOcean
+                                                              :DeepOcean
+                                                            )
+                                              ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :health ;
                             owl:qualifiedCardinality "30"^^xsd:nonNegativeInteger ;
                             owl:onDataRange xsd:integer
@@ -2612,6 +2821,10 @@
                           owl:someValuesFrom :CrimsonForest
                         ] ,
                         [ rdf:type owl:Restriction ;
+                          owl:onProperty :spawnsIn ;
+                          owl:allValuesFrom :CrimsonForest
+                        ] ,
+                        [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
                           owl:qualifiedCardinality "40"^^xsd:nonNegativeInteger ;
                           owl:onDataRange xsd:integer
@@ -2654,6 +2867,17 @@
                                                             :WindsweptSavanna
                                                           )
                                             ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :spawnsIn ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:unionOf ( :Plains
+                                                           :Savanna
+                                                           :SavannaPlateau
+                                                           :SunflowerPlains
+                                                           :WindsweptSavanna
+                                                         )
+                                           ]
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
@@ -2743,6 +2967,10 @@
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :spawnsIn ;
                         owl:someValuesFrom :Desert
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :spawnsIn ;
+                        owl:allValuesFrom :Desert
                       ] .
 
 
@@ -2812,6 +3040,10 @@
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
                              owl:someValuesFrom :OverworldBiome
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :spawnsIn ;
+                             owl:allValuesFrom :OverworldBiome
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -3034,6 +3266,17 @@
                                             ]
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :spawnsIn ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:unionOf ( :SavannaPlateau
+                                                           :WindsweptForest
+                                                           :WindsweptGravellyHills
+                                                           :WindsweptHills
+                                                           :WindsweptSavanna
+                                                         )
+                                           ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
                          owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
                          owl:onClass :Leather
@@ -3135,6 +3378,14 @@
                                                 ]
                            ] ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :spawnsIn ;
+                             owl:allValuesFrom [ rdf:type owl:Class ;
+                                                 owl:unionOf ( :BasaltDeltas
+                                                               :NetherWastes
+                                                             )
+                                               ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                              owl:onClass :MagmaCream
@@ -3183,6 +3434,10 @@
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
                              owl:someValuesFrom :MushroomFields
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :spawnsIn ;
+                             owl:allValuesFrom :MushroomFields
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -3261,6 +3516,21 @@
                                                                :WarmOcean
                                                              )
                                                ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :spawnsIn ;
+                            owl:allValuesFrom [ rdf:type owl:Class ;
+                                                owl:unionOf ( :ColdOcean
+                                                              :DeepColdOcean
+                                                              :DeepFrozenOcean
+                                                              :DeepLukewarmOcean
+                                                              :DeepOcean
+                                                              :FrozenOcean
+                                                              :LukewarmOcean
+                                                              :Ocean
+                                                              :WarmOcean
+                                                            )
+                                              ]
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :dropsItem ;
@@ -3361,6 +3631,10 @@
                           owl:someValuesFrom :Jungle
                         ] ,
                         [ rdf:type owl:Restriction ;
+                          owl:onProperty :spawnsIn ;
+                          owl:allValuesFrom :Jungle
+                        ] ,
+                        [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
                           owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                           owl:onClass :Item
@@ -3438,6 +3712,14 @@
                                             ]
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :spawnsIn ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:unionOf ( :BambooJungle
+                                                           :Jungle
+                                                         )
+                                           ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                          owl:onClass :Bamboo
@@ -3480,6 +3762,10 @@
                            owl:someValuesFrom :Desert
                          ] ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :spawnsIn ;
+                           owl:allValuesFrom :Desert
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
                            owl:qualifiedCardinality "16"^^xsd:nonNegativeInteger ;
                            owl:onDataRange xsd:integer
@@ -3496,6 +3782,10 @@
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
                           owl:someValuesFrom :Jungle
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :spawnsIn ;
+                          owl:allValuesFrom :Jungle
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -3541,6 +3831,10 @@
                            owl:someValuesFrom :OverworldBiome
                          ] ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :spawnsIn ;
+                           owl:allValuesFrom :OverworldBiome
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :PhantomMembrane
@@ -3581,6 +3875,10 @@
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :spawnsIn ;
                        owl:someValuesFrom :OverworldBiome
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :spawnsIn ;
+                       owl:allValuesFrom :OverworldBiome
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :dropsItem ;
@@ -3680,6 +3978,10 @@
                             owl:someValuesFrom :OverworldBiome
                           ] ,
                           [ rdf:type owl:Restriction ;
+                            owl:onProperty :spawnsIn ;
+                            owl:allValuesFrom :OverworldBiome
+                          ] ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :health ;
                             owl:qualifiedCardinality "24"^^xsd:nonNegativeInteger ;
                             owl:onDataRange xsd:integer
@@ -3754,6 +4056,16 @@
                                                                 :SnowyPlains
                                                               )
                                                 ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :spawnsIn ;
+                             owl:allValuesFrom [ rdf:type owl:Class ;
+                                                 owl:unionOf ( :DeepFrozenOcean
+                                                               :FrozenOcean
+                                                               :IceSpikes
+                                                               :SnowyPlains
+                                                             )
+                                               ]
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :health ;
@@ -3879,6 +4191,15 @@
                                                  ]
                             ] ,
                             [ rdf:type owl:Restriction ;
+                              owl:onProperty :spawnsIn ;
+                              owl:allValuesFrom [ rdf:type owl:Class ;
+                                                  owl:unionOf ( :DeepLukewarmOcean
+                                                                :LukewarmOcean
+                                                                :WarmOcean
+                                                              )
+                                                ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :health ;
                               owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
                               owl:onDataRange xsd:integer
@@ -3910,6 +4231,25 @@
                                                              :Taiga
                                                            )
                                              ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :spawnsIn ;
+                          owl:allValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :CherryGrove
+                                                            :DeepDark
+                                                            :Desert
+                                                            :FlowerForest
+                                                            :Grove
+                                                            :IceSpikes
+                                                            :Meadow
+                                                            :OldGrowthPineTaiga
+                                                            :OldGrowthSpruceTaiga
+                                                            :SnowyPlains
+                                                            :SnowySlopes
+                                                            :SnowyTaiga
+                                                            :Taiga
+                                                          )
+                                            ]
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -4364,6 +4704,18 @@
                                              ]
                         ] ,
                         [ rdf:type owl:Restriction ;
+                          owl:onProperty :spawnsIn ;
+                          owl:allValuesFrom [ rdf:type owl:Class ;
+                                              owl:unionOf ( :ColdOcean
+                                                            :DeepColdOcean
+                                                            :DeepFrozenOcean
+                                                            :FrozenOcean
+                                                            :FrozenRiver
+                                                            :River
+                                                          )
+                                            ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                           owl:onClass :RawSalmon
@@ -4472,6 +4824,10 @@
                          owl:someValuesFrom :OverworldBiome
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :spawnsIn ;
+                         owl:allValuesFrom :OverworldBiome
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
                          owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                          owl:onClass :RawMutton
@@ -4548,6 +4904,10 @@
                               owl:someValuesFrom :OverworldBiome
                             ] ,
                             [ rdf:type owl:Restriction ;
+                              owl:onProperty :spawnsIn ;
+                              owl:allValuesFrom :OverworldBiome
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :dropsItem ;
                               owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                               owl:onClass :Item
@@ -4587,6 +4947,14 @@
                                                                :SouldSandValley
                                                              )
                                                ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :spawnsIn ;
+                            owl:allValuesFrom [ rdf:type owl:Class ;
+                                                owl:unionOf ( :OverworldBiome
+                                                              :SouldSandValley
+                                                            )
+                                              ]
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :health ;
@@ -4653,6 +5021,14 @@
                                                             :Swamp
                                                           )
                                             ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :spawnsIn ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:unionOf ( :MangroveSwamp
+                                                           :Swamp
+                                                         )
+                                           ]
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :dropsItem ;
@@ -4933,6 +5309,23 @@
                                             ]
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :spawnsIn ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:unionOf ( :ColdOcean
+                                                           :DeepColdOcean
+                                                           :DeepFrozenOcean
+                                                           :DeepLukewarmOcean
+                                                           :DeepOcean
+                                                           :FrozenOcean
+                                                           :FrozenRiver
+                                                           :LukewarmOcean
+                                                           :Ocean
+                                                           :River
+                                                           :WarmOcean
+                                                         )
+                                           ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
                          owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
                          owl:onDataRange xsd:integer
@@ -5028,6 +5421,14 @@
                                             ]
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :spawnsIn ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:unionOf ( :IceSpikes
+                                                           :SnowyPlains
+                                                         )
+                                           ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
                          owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
                          owl:onDataRange xsd:integer
@@ -5057,6 +5458,10 @@
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
                            owl:someValuesFrom :NetherBiome
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :spawnsIn ;
+                           owl:allValuesFrom :NetherBiome
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
@@ -5171,6 +5576,10 @@
                               owl:someValuesFrom :SulfurCaves
                             ] ,
                             [ rdf:type owl:Restriction ;
+                              owl:onProperty :spawnsIn ;
+                              owl:allValuesFrom :SulfurCaves
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :dropsItem ;
                               owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                               owl:onClass :Item
@@ -5263,20 +5672,6 @@
       rdfs:subClassOf :Item .
 
 
-###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/ToolMaterial
-:ToolMaterial rdf:type owl:Class ;
-              owl:equivalentClass [ owl:intersectionOf ( :Item
-                                                         [ rdf:type owl:Restriction ;
-                                                           owl:onProperty [ owl:inverseOf :craftedWith
-                                                                          ] ;
-                                                           owl:someValuesFrom :Tool
-                                                         ]
-                                                       ) ;
-                                    rdf:type owl:Class
-                                  ] ;
-              rdfs:subClassOf :Item .
-
-
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/TotemOfUndying
 :TotemOfUndying rdf:type owl:Class ;
                 rdfs:subClassOf :Item ,
@@ -5313,6 +5708,10 @@
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :spawnsIn ;
                               owl:someValuesFrom :OverworldBiome
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :spawnsIn ;
+                              owl:allValuesFrom :OverworldBiome
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :dropsItem ;
@@ -5360,6 +5759,17 @@
                                                    ]
                               ] ,
                               [ rdf:type owl:Restriction ;
+                                owl:onProperty :spawnsIn ;
+                                owl:allValuesFrom [ rdf:type owl:Class ;
+                                                    owl:unionOf ( :DeepLukewarmOcean
+                                                                  :LukewarmOcean
+                                                                  :LushCaves
+                                                                  :MangroveSwamp
+                                                                  :WarmOcean
+                                                                )
+                                                  ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
                                 owl:onProperty :dropsItem ;
                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                 owl:onClass :TropicalFish
@@ -5392,6 +5802,10 @@
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
                           owl:someValuesFrom :Beach
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :spawnsIn ;
+                          owl:allValuesFrom :Beach
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -5461,6 +5875,20 @@
                                                ]
                           ] ,
                           [ rdf:type owl:Restriction ;
+                            owl:onProperty :spawnsIn ;
+                            owl:allValuesFrom [ rdf:type owl:Class ;
+                                                owl:unionOf ( :Desert
+                                                              :Meadow
+                                                              :Plains
+                                                              :Savanna
+                                                              :SnowyPlains
+                                                              :SnowyTaiga
+                                                              :SunflowerPlains
+                                                              :Taiga
+                                                            )
+                                              ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :dropsItem ;
                             owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                             owl:onClass :Item
@@ -5483,6 +5911,10 @@
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :spawnsIn ;
                               owl:someValuesFrom :OverworldBiome
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :spawnsIn ;
+                              owl:allValuesFrom :OverworldBiome
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :dropsItem ;
@@ -5508,6 +5940,10 @@
                                    owl:someValuesFrom :Biome
                                  ] ,
                                  [ rdf:type owl:Restriction ;
+                                   owl:onProperty :spawnsIn ;
+                                   owl:allValuesFrom :Biome
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
                                    owl:onProperty :dropsItem ;
                                    owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                                    owl:onClass :Item
@@ -5530,6 +5966,10 @@
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
                           owl:someValuesFrom :DeepDark
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :spawnsIn ;
+                          owl:allValuesFrom :DeepDark
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -5795,6 +6235,10 @@
                          owl:someValuesFrom :OverworldBiome
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :spawnsIn ;
+                         owl:allValuesFrom :OverworldBiome
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
                          owl:qualifiedCardinality "26"^^xsd:nonNegativeInteger ;
                          owl:onDataRange xsd:integer
@@ -5813,6 +6257,10 @@
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
                           owl:someValuesFrom :Biome
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :spawnsIn ;
+                          owl:allValuesFrom :Biome
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
@@ -5876,6 +6324,10 @@
                                   owl:someValuesFrom :NetherBiome
                                 ] ,
                                 [ rdf:type owl:Restriction ;
+                                  owl:onProperty :spawnsIn ;
+                                  owl:allValuesFrom :NetherBiome
+                                ] ,
+                                [ rdf:type owl:Restriction ;
                                   owl:onProperty :health ;
                                   owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
                                   owl:onDataRange xsd:integer
@@ -5927,6 +6379,21 @@
                                                            :WoodedBadlands
                                                          )
                                            ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :spawnsIn ;
+                        owl:allValuesFrom [ rdf:type owl:Class ;
+                                            owl:unionOf ( :Forest
+                                                          :Grove
+                                                          :OldGrowthPineTaiga
+                                                          :OldGrowthSpruceTaiga
+                                                          :SavannaPlateau
+                                                          :SnowyTaiga
+                                                          :SparseJungle
+                                                          :Taiga
+                                                          :WoodedBadlands
+                                                        )
+                                          ]
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :dropsItem ;
@@ -6039,14 +6506,18 @@
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
                           owl:someValuesFrom :OverworldBiome
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :spawnsIn ;
+                          owl:allValuesFrom :OverworldBiome
                         ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/ZombieHorse
 :ZombieHorse rdf:type owl:Class ;
-             rdfs:subClassOf :Animal ,
-                             :Monster ,
+             rdfs:subClassOf :Monster ,
                              :Undead ,
+                             :Wolf ,
                              [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                       owl:onProperty :dropsItem ;
                                                       owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
@@ -6075,6 +6546,18 @@
                                                                   :WindsweptSavanna
                                                                 )
                                                   ]
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :spawnsIn ;
+                               owl:allValuesFrom [ rdf:type owl:Class ;
+                                                   owl:unionOf ( :Plains
+                                                                 :Savanna
+                                                                 :SavannaPlateau
+                                                                 :SnowyPlains
+                                                                 :SunflowerPlains
+                                                                 :WindsweptSavanna
+                                                               )
+                                                 ]
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :health ;
@@ -6108,6 +6591,22 @@
                                                                      :WarmOcean
                                                                    )
                                                      ]
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :spawnsIn ;
+                                  owl:allValuesFrom [ rdf:type owl:Class ;
+                                                      owl:unionOf ( :ColdOcean
+                                                                    :DeepColdOcean
+                                                                    :DeepFrozenOcean
+                                                                    :DeepLukewarmOcean
+                                                                    :DeepOcean
+                                                                    :DripstoneCaves
+                                                                    :FrozenOcean
+                                                                    :LukewarmOcean
+                                                                    :Ocean
+                                                                    :WarmOcean
+                                                                  )
+                                                    ]
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :dropsItem ;
@@ -6223,6 +6722,14 @@
                                                                        :NetherWastes
                                                                      )
                                                        ]
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :spawnsIn ;
+                                    owl:allValuesFrom [ rdf:type owl:Class ;
+                                                        owl:unionOf ( :CrimsonForest
+                                                                      :NetherWastes
+                                                                    )
+                                                      ]
                                   ] .
 
 

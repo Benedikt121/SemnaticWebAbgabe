@@ -9,12 +9,29 @@
 <http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft> rdf:type owl:Ontology .
 
 #################################################################
+#    Annotation properties
+#################################################################
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
 #    Object Properties
 #################################################################
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/attacks
+:attacks rdf:type owl:ObjectProperty ,
+                  owl:AsymmetricProperty ,
+                  owl:IrreflexiveProperty ;
+         rdfs:domain :HostileMob ;
+         rdfs:range :Player .
+
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/behaves
 :behaves rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf owl:topObjectProperty ;
+         rdf:type owl:FunctionalProperty ;
          rdfs:domain :Mob ;
          rdfs:range :Behavior .
 
@@ -33,29 +50,37 @@
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/dropsItem
-:dropsItem rdf:type owl:ObjectProperty ;
-           rdfs:domain [ rdf:type owl:Class ;
-                         owl:unionOf ( :Item
-                                       :Mob
-                                     )
-                       ] ;
+:dropsItem rdf:type owl:ObjectProperty ,
+                    owl:InverseFunctionalProperty ;
+           rdfs:domain :Mob ;
            rdfs:range :Item .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/harvestedWith
-:harvestedWith rdf:type owl:ObjectProperty ;
+:harvestedWith rdf:type owl:ObjectProperty ,
+                        owl:AsymmetricProperty ,
+                        owl:IrreflexiveProperty ;
                rdfs:domain :Block ;
                rdfs:range :Tool .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/inDimension
-:inDimension rdf:type owl:ObjectProperty ;
+:inDimension rdf:type owl:ObjectProperty ,
+                      owl:FunctionalProperty ;
              rdfs:domain :Biome ;
              rdfs:range :Dimension .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/livesIn
+:livesIn rdf:type owl:ObjectProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain :Player ;
+         rdfs:range :OverworldBiome .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/rarity
-:rarity rdf:type owl:ObjectProperty ;
+:rarity rdf:type owl:ObjectProperty ,
+                 owl:FunctionalProperty ;
         rdfs:domain :Item ;
         rdfs:range :Rarity .
 
@@ -68,9 +93,18 @@
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/spawnsIn
-:spawnsIn rdf:type owl:ObjectProperty ;
+:spawnsIn rdf:type owl:ObjectProperty ,
+                   owl:AsymmetricProperty ,
+                   owl:IrreflexiveProperty ;
           rdfs:domain :Mob ;
           rdfs:range :Biome .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/tamedBy
+:tamedBy rdf:type owl:ObjectProperty ,
+                  owl:FunctionalProperty ;
+         rdfs:domain :Tameable ;
+         rdfs:range :Player .
 
 
 #################################################################
@@ -97,7 +131,11 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/health
 :health rdf:type owl:DatatypeProperty ;
-        rdfs:domain :Mob ;
+        rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( :Mob
+                                    :Player
+                                  )
+                    ] ;
         rdfs:range xsd:integer .
 
 
@@ -156,6 +194,10 @@
                                                                 :WoodedBadlands
                                                               )
                                                 ]
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :dropsItem ;
+                             owl:allValuesFrom :ArmadilloScute
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
@@ -574,6 +616,10 @@
                          owl:someValuesFrom :NetherBiome
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :dropsItem ;
+                         owl:allValuesFrom :BlazeRod
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
                          owl:allValuesFrom :NetherBiome
                        ] ,
@@ -872,6 +918,20 @@
       rdfs:subClassOf :Mob .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Bossloot
+:Bossloot rdf:type owl:Class ;
+          owl:equivalentClass [ owl:intersectionOf ( :Item
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty [ owl:inverseOf :dropsItem
+                                                                      ] ;
+                                                       owl:someValuesFrom :Boss
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] ;
+          rdfs:subClassOf :Item .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/BottledPotion
 :BottledPotion rdf:type owl:Class ;
                rdfs:subClassOf :Drinkable ,
@@ -882,13 +942,12 @@
 :Bowl rdf:type owl:Class ;
       rdfs:subClassOf :Item ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :rarity ;
-                        owl:someValuesFrom :Common
+                        owl:onProperty :craftedWith ;
+                        owl:someValuesFrom :Plank
                       ] ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :craftedWith ;
-                        owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                        owl:onClass :Plank
+                        owl:onProperty :rarity ;
+                        owl:someValuesFrom :Common
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :stackSize ;
@@ -919,6 +978,10 @@
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
                           owl:someValuesFrom :OverworldBiome
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :dropsItem ;
+                          owl:allValuesFrom :BreezeRod
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
@@ -984,6 +1047,10 @@
                              owl:someValuesFrom :Desert
                            ] ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :dropsItem ;
+                             owl:allValuesFrom :RottenFlesh
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
                              owl:allValuesFrom :Desert
                            ] ,
@@ -1006,6 +1073,7 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Carrot
 :Carrot rdf:type owl:Class ;
         rdfs:subClassOf :Crops ,
+                        :Eatable ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
                           owl:someValuesFrom :Common
@@ -1019,6 +1087,7 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Cat
 :Cat rdf:type owl:Class ;
      rdfs:subClassOf :Animal ,
+                     :Tameable ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :behaves ;
                        owl:someValuesFrom :Passive
@@ -1038,6 +1107,10 @@
                                                           :TemperateBiome
                                                         )
                                           ]
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :dropsItem ;
+                       owl:allValuesFrom :String
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :spawnsIn ;
@@ -1247,6 +1320,10 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :dropsItem ;
+                               owl:allValuesFrom :CopperIngot
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :dropsItem ;
                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                owl:onClass :CopperIngot
                              ] ,
@@ -1403,6 +1480,10 @@
                            owl:someValuesFrom :OverworldBiome
                          ] ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :dropsItem ;
+                           owl:allValuesFrom :Gunpowder
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
                            owl:allValuesFrom :OverworldBiome
                          ] ,
@@ -1532,6 +1613,10 @@
                                               ]
                          ] ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :dropsItem ;
+                           owl:allValuesFrom :RawCod
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
                            owl:allValuesFrom [ rdf:type owl:Class ;
                                                owl:unionOf ( :DeepLukewarmOcean
@@ -1556,6 +1641,7 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Donkey
 :Donkey rdf:type owl:Class ;
         rdfs:subClassOf :Animal ,
+                        :Tameable ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
                           owl:someValuesFrom :Passive
@@ -1571,6 +1657,10 @@
                                                              :WindsweptSavanna
                                                            )
                                              ]
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :dropsItem ;
+                          owl:allValuesFrom :Leather
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
@@ -1871,6 +1961,15 @@
                              ] .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/EndMob
+:EndMob rdf:type owl:Class ;
+        owl:equivalentClass [ rdf:type owl:Restriction ;
+                              owl:onProperty :spawnsIn ;
+                              owl:someValuesFrom :EndBiome
+                            ] ;
+        rdfs:subClassOf :Mob .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/EnderPearl
 :EnderPearl rdf:type owl:Class ;
             rdfs:subClassOf :Throwable ,
@@ -1901,6 +2000,10 @@
                                                                :WarpedForest
                                                              )
                                                ]
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :dropsItem ;
+                            owl:allValuesFrom :EnderPearl
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :spawnsIn ;
@@ -2062,6 +2165,7 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Fox
 :Fox rdf:type owl:Class ;
      rdfs:subClassOf :Animal ,
+                     :Tameable ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :behaves ;
                        owl:someValuesFrom :Neutral
@@ -2255,6 +2359,10 @@
                              owl:someValuesFrom :OverworldBiome
                            ] ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :dropsItem ;
+                             owl:allValuesFrom :GlowInkSac
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
                              owl:allValuesFrom :OverworldBiome
                            ] ,
@@ -2302,6 +2410,10 @@
                                                            :SnowySlopes
                                                          )
                                            ]
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :dropsItem ;
+                        owl:allValuesFrom :GoatHorn
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :spawnsIn ;
@@ -2666,6 +2778,7 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Horse
 :Horse rdf:type owl:Class ;
        rdfs:subClassOf :Animal ,
+                       :Tameable ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
                          owl:someValuesFrom :Passive
@@ -2680,6 +2793,10 @@
                                                             :WindsweptSavanna
                                                           )
                                             ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :dropsItem ;
+                         owl:allValuesFrom :Leather
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
@@ -3024,6 +3141,7 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Llama
 :Llama rdf:type owl:Class ;
        rdfs:subClassOf :Animal ,
+                       :Tameable ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
                          owl:someValuesFrom :Neutral
@@ -3038,6 +3156,10 @@
                                                             :WindsweptSavanna
                                                           )
                                             ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :dropsItem ;
+                         owl:allValuesFrom :Leather
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
@@ -3065,10 +3187,6 @@
 :Log rdf:type owl:Class ;
      rdfs:subClassOf :FullBlock ,
                      :Item ,
-                     [ rdf:type owl:Restriction ;
-                       owl:onProperty :craftsInto ;
-                       owl:someValuesFrom :Plank
-                     ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :harvestedWith ;
                        owl:someValuesFrom :Axe
@@ -3145,6 +3263,10 @@
                                                 ]
                            ] ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :dropsItem ;
+                             owl:allValuesFrom :MagmaCream
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
                              owl:allValuesFrom [ rdf:type owl:Class ;
                                                  owl:unionOf ( :BasaltDeltas
@@ -3175,6 +3297,16 @@
                           owl:onProperty :inDimension ;
                           owl:hasValue :Overworld
                         ] .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Meat
+:Meat rdf:type owl:Class ;
+      owl:equivalentClass [ rdf:type owl:Restriction ;
+                            owl:onProperty [ owl:inverseOf :dropsItem
+                                           ] ;
+                            owl:someValuesFrom :Animal
+                          ] ;
+      rdfs:subClassOf :Eatable .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Metal
@@ -3230,9 +3362,14 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Mule
 :Mule rdf:type owl:Class ;
       rdfs:subClassOf :Animal ,
+                      :Tameable ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :behaves ;
                         owl:someValuesFrom :Passive
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :dropsItem ;
+                        owl:allValuesFrom :Leather
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :dropsItem ;
@@ -3263,19 +3400,8 @@
                             owl:someValuesFrom :Neutral
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :spawnsIn ;
-                            owl:someValuesFrom [ rdf:type owl:Class ;
-                                                 owl:unionOf ( :ColdOcean
-                                                               :DeepColdOcean
-                                                               :DeepFrozenOcean
-                                                               :DeepLukewarmOcean
-                                                               :DeepOcean
-                                                               :FrozenOcean
-                                                               :LukewarmOcean
-                                                               :Ocean
-                                                               :WarmOcean
-                                                             )
-                                               ]
+                            owl:onProperty :dropsItem ;
+                            owl:allValuesFrom :NautilusShell
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :spawnsIn ;
@@ -3323,6 +3449,15 @@
                                    owl:hasValue :Nether
                                  ] ;
              rdfs:subClassOf :Biome .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/NetherMob
+:NetherMob rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty :spawnsIn ;
+                                 owl:someValuesFrom :NetherBiome
+                               ] ;
+           rdfs:subClassOf :Mob .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/NetherStar
@@ -3443,6 +3578,15 @@
                 rdfs:subClassOf :Biome .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/OverworldMob
+:OverworldMob rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :spawnsIn ;
+                                    owl:someValuesFrom :OverworldBiome
+                                  ] ;
+              rdfs:subClassOf :Mob .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/PaleGarden
 :PaleGarden rdf:type owl:Class ;
             rdfs:subClassOf :TemperateBiome ,
@@ -3466,6 +3610,10 @@
                                                             :Jungle
                                                           )
                                             ]
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :dropsItem ;
+                         owl:allValuesFrom :Bamboo
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
@@ -3529,6 +3677,7 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Parrot
 :Parrot rdf:type owl:Class ;
         rdfs:subClassOf :Animal ,
+                        :Tameable ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
                           owl:someValuesFrom :Passive
@@ -3536,6 +3685,10 @@
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
                           owl:someValuesFrom :Jungle
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :dropsItem ;
+                          owl:allValuesFrom :Feather
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
@@ -3584,6 +3737,10 @@
                            owl:someValuesFrom :OverworldBiome
                          ] ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :dropsItem ;
+                           owl:allValuesFrom :PhantomMembrane
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
                            owl:allValuesFrom :OverworldBiome
                          ] ,
@@ -3626,6 +3783,10 @@
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :spawnsIn ;
                        owl:someValuesFrom :OverworldBiome
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :dropsItem ;
+                       owl:allValuesFrom :RawPorkchop
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :spawnsIn ;
@@ -3683,6 +3844,10 @@
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :spawnsIn ;
                                owl:someValuesFrom :NetherBiome
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :dropsItem ;
+                               owl:allValuesFrom :GoldenAxe
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :dropsItem ;
@@ -3758,13 +3923,37 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :rarity ;
-                         owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Common
+                         owl:allValuesFrom :Common
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
                          owl:hasValue "64"^^xsd:nonNegativeInteger
                        ] .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/PlantBasedFood
+:PlantBasedFood rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Eatable
+                                                           [ rdf:type owl:Class ;
+                                                             owl:unionOf ( :Crops
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :craftedWith ;
+                                                                             owl:someValuesFrom :Crops
+                                                                           ]
+                                                                         )
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                rdfs:subClassOf :Eatable .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Player
+:Player rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :health ;
+                          owl:hasValue 20
+                        ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/PolarBear
@@ -3829,6 +4018,7 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Potato
 :Potato rdf:type owl:Class ;
         rdfs:subClassOf :Crops ,
+                        :Eatable ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
                           owl:someValuesFrom :Common
@@ -4049,6 +4239,10 @@
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
                            owl:someValuesFrom :OverworldBiome
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :dropsItem ;
+                           owl:allValuesFrom :Saddle
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
@@ -4547,6 +4741,10 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :dropsItem ;
+                           owl:allValuesFrom :ShulkerShell
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :dropsItem ;
                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                            owl:onClass :ShulkerShell
                          ] ,
@@ -4694,6 +4892,10 @@
                                             ]
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :dropsItem ;
+                         owl:allValuesFrom :Slimeball
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
                          owl:allValuesFrom [ rdf:type owl:Class ;
                                              owl:unionOf ( :MangroveSwamp
@@ -4780,6 +4982,10 @@
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :behaves ;
                              owl:someValuesFrom :Passive
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :dropsItem ;
+                             owl:allValuesFrom :Snowball
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :dropsItem ;
@@ -4970,6 +5176,10 @@
                                             ]
                        ] ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :dropsItem ;
+                         owl:allValuesFrom :InkSac
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
                          owl:allValuesFrom [ rdf:type owl:Class ;
                                              owl:unionOf ( :ColdOcean
@@ -5116,6 +5326,10 @@
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
                            owl:someValuesFrom :NetherBiome
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :dropsItem ;
+                           owl:allValuesFrom :String
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
@@ -5339,17 +5553,6 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/TraderLama
 :TraderLama rdf:type owl:Class ;
             rdfs:subClassOf :Animal ,
-                            [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                     owl:onProperty :health ;
-                                                     owl:minCardinality "15"^^xsd:nonNegativeInteger
-                                                   ]
-                                                   [ rdf:type owl:Restriction ;
-                                                     owl:onProperty :health ;
-                                                     owl:maxCardinality "30"^^xsd:nonNegativeInteger
-                                                   ]
-                                                 ) ;
-                              rdf:type owl:Class
-                            ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :behaves ;
                               owl:someValuesFrom :Neutral
@@ -5359,6 +5562,10 @@
                               owl:someValuesFrom :OverworldBiome
                             ] ,
                             [ rdf:type owl:Restriction ;
+                              owl:onProperty :dropsItem ;
+                              owl:allValuesFrom :Leather
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :spawnsIn ;
                               owl:allValuesFrom :OverworldBiome
                             ] ,
@@ -5366,6 +5573,10 @@
                               owl:onProperty :dropsItem ;
                               owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
                               owl:onClass :Leather
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :health ;
+                              owl:hasValue 30
                             ] .
 
 
@@ -5467,6 +5678,27 @@
         rdfs:subClassOf :Mob .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/ValueableIItem
+:ValueableIItem rdf:type owl:Class ;
+                owl:equivalentClass [ owl:intersectionOf ( :Item
+                                                           [ rdf:type owl:Class ;
+                                                             owl:unionOf ( :Bossloot
+                                                                           [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty :rarity ;
+                                                                             owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                                  owl:unionOf ( :Epic
+                                                                                                                :Rare
+                                                                                                              )
+                                                                                                ]
+                                                                           ]
+                                                                         )
+                                                           ]
+                                                         ) ;
+                                      rdf:type owl:Class
+                                    ] ;
+                rdfs:subClassOf :Item .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Vex
 :Vex rdf:type owl:Class ;
      rdfs:subClassOf :Monster ,
@@ -5544,6 +5776,10 @@
                               owl:someValuesFrom :OverworldBiome
                             ] ,
                             [ rdf:type owl:Restriction ;
+                              owl:onProperty :dropsItem ;
+                              owl:allValuesFrom :Emerald
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :spawnsIn ;
                               owl:allValuesFrom :OverworldBiome
                             ] ,
@@ -5595,6 +5831,10 @@
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
                           owl:someValuesFrom :DeepDark
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :dropsItem ;
+                          owl:allValuesFrom :SculkCatalyst
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
@@ -5854,6 +6094,10 @@
                           owl:someValuesFrom :Biome
                         ] ,
                         [ rdf:type owl:Restriction ;
+                          owl:onProperty :dropsItem ;
+                          owl:allValuesFrom :NetherStar
+                        ] ,
+                        [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
                           owl:allValuesFrom :Biome
                         ] ,
@@ -5946,6 +6190,7 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Wolf
 :Wolf rdf:type owl:Class ;
       rdfs:subClassOf :Animal ,
+                      :Tameable ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :behaves ;
                         owl:someValuesFrom :Neutral
@@ -6025,6 +6270,10 @@
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
                           owl:someValuesFrom :Hostile
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :dropsItem ;
+                          owl:allValuesFrom :RottenFlesh
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
@@ -6171,6 +6420,10 @@
                                                      ]
                                 ] ,
                                 [ rdf:type owl:Restriction ;
+                                  owl:onProperty :dropsItem ;
+                                  owl:allValuesFrom :RottenFlesh
+                                ] ,
+                                [ rdf:type owl:Restriction ;
                                   owl:onProperty :spawnsIn ;
                                   owl:allValuesFrom [ rdf:type owl:Class ;
                                                       owl:unionOf ( :ColdOcean
@@ -6308,6 +6561,12 @@
 #    Individuals
 #################################################################
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Alex
+:Alex rdf:type owl:NamedIndividual ,
+               :Player ;
+      :livesIn :Meadow01 .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/End
 :End rdf:type owl:NamedIndividual ,
               :Dimension .
@@ -6323,7 +6582,7 @@
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :spawnsIn ;
-                        owl:someValuesFrom :TheEnd
+                        owl:hasValue :TheEnd
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :dropsItem ;
@@ -6336,14 +6595,83 @@
                       ] .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Enderman01
+:Enderman01 rdf:type owl:NamedIndividual ,
+                     :Enderman ;
+            :dropsItem :Enderpearl01 ;
+            :spawnsIn :TheEnd .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Enderpearl01
+:Enderpearl01 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Meadow01
+:Meadow01 rdf:type owl:NamedIndividual ,
+                   :Meadow .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/MushroomFields01
+:MushroomFields01 rdf:type owl:NamedIndividual ,
+                           :MushroomFields .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Nether
 :Nether rdf:type owl:NamedIndividual ,
                  :Dimension .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/NetherStar01
+:NetherStar01 rdf:type owl:NamedIndividual .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Overworld
 :Overworld rdf:type owl:NamedIndividual ,
                     :Dimension .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Pig01
+:Pig01 rdf:type owl:NamedIndividual ,
+                :Pig ;
+       :dropsItem :RawPorkchop01 .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Plains01
+:Plains01 rdf:type owl:NamedIndividual ,
+                   :Plains .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Pluto
+:Pluto rdf:type owl:NamedIndividual ,
+                :Wolf ;
+       :tamedBy :Steve .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RawPorkchop01
+:RawPorkchop01 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Steve
+:Steve rdf:type owl:NamedIndividual ;
+       :livesIn :MushroomFields01 .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/TheEnd
+:TheEnd rdf:type owl:NamedIndividual ,
+                 :TheEnd .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Wither
+:Wither rdf:type owl:NamedIndividual ,
+                 :Wither ;
+        :dropsItem :NetherStar01 ;
+        :spawnsIn :Plains01 .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Zombie01
+:Zombie01 rdf:type owl:NamedIndividual ,
+                   :Zombie ;
+          :spawnsIn :Plains01 .
 
 
 #################################################################
@@ -6386,11 +6714,51 @@
 
 
 [ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( :End
+  owl:distinctMembers ( :Alex
+                        :End
+                        :Enderdragon
                         :Nether
                         :Overworld
+                        :Pluto
+                        :Steve
+                        :TheEnd
                       )
 ] .
 
+
+#################################################################
+#    Rules
+#################################################################
+
+:m rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+:p rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment "" ;
+   rdfs:label "HostileMobAttackRule" ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :HostileMob ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :m
+                                                     ] ;
+                                           rdf:rest [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                                      rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                                  <http://www.w3.org/2003/11/swrl#classPredicate> :Player ;
+                                                                  <http://www.w3.org/2003/11/swrl#argument1> :p
+                                                                ] ;
+                                                      rdf:rest rdf:nil
+                                                    ]
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#IndividualPropertyAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#propertyPredicate> :attacks ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :m ;
+                                                       <http://www.w3.org/2003/11/swrl#argument2> :p
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

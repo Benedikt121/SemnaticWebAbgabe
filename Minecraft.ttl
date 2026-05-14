@@ -955,6 +955,24 @@
                       ] .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Bread
+:Bread rdf:type owl:Class ;
+       rdfs:subClassOf :Eatable ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :rarity ;
+                         owl:allValuesFrom :Common
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :craftedWith ;
+                         owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
+                         owl:onClass :Wheat
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :stackSize ;
+                         owl:hasValue 64
+                       ] .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Breeze
 :Breeze rdf:type owl:Class ;
         rdfs:subClassOf :Monster ,
@@ -6581,10 +6599,6 @@
                         owl:someValuesFrom :Hostile
                       ] ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :spawnsIn ;
-                        owl:hasValue :TheEnd
-                      ] ,
-                      [ rdf:type owl:Restriction ;
                         owl:onProperty :dropsItem ;
                         owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
                         owl:onClass :Item
@@ -6592,7 +6606,8 @@
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :health ;
                         owl:hasValue "200"^^xsd:nonNegativeInteger
-                      ] .
+                      ] ;
+             :spawnsIn :TheEnd .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Enderman01

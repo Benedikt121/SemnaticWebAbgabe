@@ -111,16 +111,6 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#ToolMaterial
-:ToolMaterial rdf:type owl:Class ;
-              owl:equivalentClass [ rdf:type owl:Restriction ;
-                                    owl:onProperty [ owl:inverseOf :craftedWith
-                                                   ] ;
-                                    owl:someValuesFrom :Tool
-                                  ] ;
-              rdfs:subClassOf :Item .
-
-
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Allay
 :Allay rdf:type owl:Class ;
        rdfs:subClassOf :Mob ,
@@ -135,8 +125,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
-                         owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "20"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -186,8 +175,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :health ;
-                             owl:qualifiedCardinality "12"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "12"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -200,8 +188,7 @@
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :stackSize ;
-                                  owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                  owl:onDataRange xsd:integer
+                                  owl:hasValue "64"^^xsd:nonNegativeInteger
                                 ] .
 
 
@@ -214,8 +201,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -246,62 +232,82 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
-                         owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "64"^^xsd:nonNegativeInteger
                        ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/ArrowOfPoison
 :ArrowOfPoison rdf:type owl:Class ;
-               rdfs:subClassOf :Arrow ,
+               rdfs:subClassOf :Item ,
                                [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :craftedWith ;
+                                                        owl:someValuesFrom :Arrow
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
                                                         owl:onProperty :craftedWith ;
                                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                         owl:onClass :LingeringPotionOfPoison
                                                       ]
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :craftedWith ;
-                                                        owl:qualifiedCardinality "8"^^xsd:nonNegativeInteger ;
-                                                        owl:onClass :Arrow
-                                                      ]
                                                     ) ;
                                  rdf:type owl:Class
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :rarity ;
+                                 owl:allValuesFrom :Common
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :stackSize ;
+                                 owl:hasValue "64"^^xsd:nonNegativeInteger
                                ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/ArrowOfSlowness
 :ArrowOfSlowness rdf:type owl:Class ;
-                 rdfs:subClassOf :Arrow ,
+                 rdfs:subClassOf :Item ,
                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :craftedWith ;
+                                                          owl:someValuesFrom :Arrow
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
                                                           owl:onProperty :craftedWith ;
                                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                           owl:onClass :LingeringPotionOfSlowness
                                                         ]
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :craftedWith ;
-                                                          owl:qualifiedCardinality "8"^^xsd:nonNegativeInteger ;
-                                                          owl:onClass :Arrow
-                                                        ]
                                                       ) ;
                                    rdf:type owl:Class
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :rarity ;
+                                   owl:allValuesFrom :Common
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :stackSize ;
+                                   owl:hasValue "64"^^xsd:nonNegativeInteger
                                  ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/ArrowOfWeakness
 :ArrowOfWeakness rdf:type owl:Class ;
-                 rdfs:subClassOf :Arrow ,
+                 rdfs:subClassOf :Item ,
                                  [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                          owl:onProperty :craftedWith ;
+                                                          owl:someValuesFrom :Arrow
+                                                        ]
+                                                        [ rdf:type owl:Restriction ;
                                                           owl:onProperty :craftedWith ;
                                                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                                           owl:onClass :LingeringPotionOfWeakness
                                                         ]
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :craftedWith ;
-                                                          owl:qualifiedCardinality "8"^^xsd:nonNegativeInteger ;
-                                                          owl:onClass :Arrow
-                                                        ]
                                                       ) ;
                                    rdf:type owl:Class
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :rarity ;
+                                   owl:allValuesFrom :Common
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :stackSize ;
+                                   owl:hasValue "64"^^xsd:nonNegativeInteger
                                  ] .
 
 
@@ -315,8 +321,7 @@
      rdfs:subClassOf :Tool ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :stackSize ;
-                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                       owl:onDataRange xsd:integer
+                       owl:hasValue "1"^^xsd:nonNegativeInteger
                      ] .
 
 
@@ -343,8 +348,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
-                           owl:qualifiedCardinality "14"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "14"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -366,14 +370,8 @@
                           owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :dropsItem ;
-                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :Bamboo
-                        ] ,
-                        [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
-                          owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "64"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -417,8 +415,7 @@
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :health ;
-                       owl:qualifiedCardinality "6"^^xsd:nonNegativeInteger ;
-                       owl:onDataRange xsd:integer
+                       owl:hasValue "6"^^xsd:nonNegativeInteger
                      ] .
 
 
@@ -476,8 +473,7 @@
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :health ;
-                       owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
-                       owl:onDataRange xsd:integer
+                       owl:hasValue "10"^^xsd:nonNegativeInteger
                      ] .
 
 
@@ -490,8 +486,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
-                            owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "64"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -518,13 +513,11 @@
                           [ rdf:type owl:Class ;
                             owl:unionOf ( [ rdf:type owl:Restriction ;
                                             owl:onProperty :craftedWith ;
-                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                            owl:onClass :InkSac
+                                            owl:someValuesFrom :InkSac
                                           ]
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty :craftedWith ;
-                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                            owl:onClass :WitherRose
+                                            owl:someValuesFrom :WitherRose
                                           ]
                                         )
                           ] ,
@@ -534,8 +527,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
-                            owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "64"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -565,14 +557,8 @@
                              owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :dropsItem ;
-                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass :BlackWool
-                           ] ,
-                           [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -598,8 +584,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
-                         owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "20"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -617,8 +602,7 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
-                               owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "64"^^xsd:nonNegativeInteger
                              ] .
 
 
@@ -636,8 +620,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
-                            owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "64"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -651,6 +634,14 @@
              rdfs:subClassOf :FullBlock ,
                              :Item ,
                              [ rdf:type owl:Restriction ;
+                               owl:onProperty :craftedWith ;
+                               owl:someValuesFrom :Coal
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :craftsInto ;
+                               owl:someValuesFrom :Coal
+                             ] ,
+                             [ rdf:type owl:Restriction ;
                                owl:onProperty :harvestedWith ;
                                owl:someValuesFrom :Pickaxe
                              ] ,
@@ -659,24 +650,8 @@
                                owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :craftedWith ;
-                               owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Coal
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :craftsInto ;
-                               owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                               owl:onClass :Coal
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :dropsItem ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :BlockOfCoal
-                             ] ,
-                             [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
-                               owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "64"^^xsd:nonNegativeInteger
                              ] .
 
 
@@ -684,6 +659,14 @@
 :BlockOfCopper rdf:type owl:Class ;
                rdfs:subClassOf :Copper ,
                                :FullBlock ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :craftedWith ;
+                                 owl:someValuesFrom :CopperIngot
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :craftsInto ;
+                                 owl:someValuesFrom :CopperIngot
+                               ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :harvestedWith ;
                                  owl:someValuesFrom :Pickaxe
@@ -693,24 +676,8 @@
                                  owl:someValuesFrom :Common
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :craftedWith ;
-                                 owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                                 owl:onClass :CopperIngot
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :craftsInto ;
-                                 owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                                 owl:onClass :CopperIngot
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :dropsItem ;
-                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                 owl:onClass :BlockOfCopper
-                               ] ,
-                               [ rdf:type owl:Restriction ;
                                  owl:onProperty :stackSize ;
-                                 owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                 owl:onDataRange xsd:integer
+                                 owl:hasValue "64"^^xsd:nonNegativeInteger
                                ] .
 
 
@@ -718,6 +685,14 @@
 :BlockOfEmerald rdf:type owl:Class ;
                 rdfs:subClassOf :FullBlock ,
                                 :Item ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :craftedWith ;
+                                  owl:someValuesFrom :Emerald
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :craftsInto ;
+                                  owl:someValuesFrom :Emerald
+                                ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :harvestedWith ;
                                   owl:someValuesFrom :Pickaxe
@@ -727,19 +702,8 @@
                                   owl:someValuesFrom :Common
                                 ] ,
                                 [ rdf:type owl:Restriction ;
-                                  owl:onProperty :craftsInto ;
-                                  owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                                  owl:onClass :Emerald
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :dropsItem ;
-                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                  owl:onClass :BlockOfEmerald
-                                ] ,
-                                [ rdf:type owl:Restriction ;
                                   owl:onProperty :stackSize ;
-                                  owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                  owl:onDataRange xsd:integer
+                                  owl:hasValue "64"^^xsd:nonNegativeInteger
                                 ] .
 
 
@@ -747,6 +711,14 @@
 :BlockOfGold rdf:type owl:Class ;
              rdfs:subClassOf :FullBlock ,
                              :Gold ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :craftedWith ;
+                               owl:someValuesFrom :GoldIngot
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :craftsInto ;
+                               owl:someValuesFrom :GoldIngot
+                             ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :harvestedWith ;
                                owl:someValuesFrom :Pickaxe
@@ -756,24 +728,8 @@
                                owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :craftedWith ;
-                               owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                               owl:onClass :GoldIngot
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :craftsInto ;
-                               owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                               owl:onClass :GoldIngot
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :dropsItem ;
-                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                               owl:onClass :BlockOfGold
-                             ] ,
-                             [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
-                               owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "64"^^xsd:nonNegativeInteger
                              ] .
 
 
@@ -781,23 +737,20 @@
 :BlockOfIron rdf:type owl:Class ;
              rdfs:subClassOf :Iron ,
                              [ rdf:type owl:Restriction ;
+                               owl:onProperty :craftedWith ;
+                               owl:someValuesFrom :IronIngot
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :craftsInto ;
+                               owl:someValuesFrom :IronIngot
+                             ] ,
+                             [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
                                owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :craftedWith ;
-                               owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                               owl:onClass :IronIngot
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :craftsInto ;
-                               owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                               owl:onClass :IronIngot
-                             ] ,
-                             [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
-                               owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "64"^^xsd:nonNegativeInteger
                              ] .
 
 
@@ -845,8 +798,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "16"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "16"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -854,36 +806,25 @@
 :Bone rdf:type owl:Class ;
       rdfs:subClassOf :Item ,
                       [ rdf:type owl:Restriction ;
+                        owl:onProperty :craftsInto ;
+                        owl:someValuesFrom :BoneMeal
+                      ] ,
+                      [ rdf:type owl:Restriction ;
                         owl:onProperty :rarity ;
                         owl:someValuesFrom :Common
                       ] ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :craftsInto ;
-                        owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                        owl:onClass :BoneMeal
-                      ] ,
-                      [ rdf:type owl:Restriction ;
                         owl:onProperty :stackSize ;
-                        owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                        owl:onDataRange xsd:integer
+                        owl:hasValue "64"^^xsd:nonNegativeInteger
                       ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/BoneMeal
 :BoneMeal rdf:type owl:Class ;
           rdfs:subClassOf :Item ,
-                          [ rdf:type owl:Class ;
-                            owl:unionOf ( [ rdf:type owl:Restriction ;
-                                            owl:onProperty :craftedWith ;
-                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                            owl:onClass :Bone
-                                          ]
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty :craftedWith ;
-                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                            owl:onClass :Boneblock
-                                          ]
-                                        )
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :craftedWith ;
+                            owl:someValuesFrom :Bone
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :rarity ;
@@ -891,8 +832,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
-                            owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "64"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -900,6 +840,14 @@
 :Boneblock rdf:type owl:Class ;
            rdfs:subClassOf :FullBlock ,
                            :Item ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :craftedWith ;
+                             owl:someValuesFrom :BoneMeal
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :craftsInto ;
+                             owl:someValuesFrom :BoneMeal
+                           ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :harvestedWith ;
                              owl:someValuesFrom :Pickaxe
@@ -909,24 +857,8 @@
                              owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :craftedWith ;
-                             owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                             owl:onClass :BoneMeal
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :craftsInto ;
-                             owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                             owl:onClass :BoneMeal
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :dropsItem ;
-                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass :Boneblock
-                           ] ,
-                           [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -960,8 +892,7 @@
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :stackSize ;
-                        owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                        owl:onDataRange xsd:integer
+                        owl:hasValue "64"^^xsd:nonNegativeInteger
                       ] .
 
 
@@ -991,8 +922,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "30"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "30"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -1010,8 +940,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -1037,8 +966,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
-                         owl:qualifiedCardinality "32"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "32"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -1071,8 +999,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :health ;
-                             owl:qualifiedCardinality "32"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "32"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -1085,8 +1012,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
-                          owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "64"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -1136,8 +1062,7 @@
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :health ;
-                       owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
-                       owl:onDataRange xsd:integer
+                       owl:hasValue "10"^^xsd:nonNegativeInteger
                      ] .
 
 
@@ -1169,8 +1094,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :health ;
-                              owl:qualifiedCardinality "12"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "12"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -1220,8 +1144,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
-                           owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "4"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -1233,14 +1156,8 @@
                         owl:someValuesFrom :Common
                       ] ,
                       [ rdf:type owl:Restriction ;
-                        owl:onProperty :craftedWith ;
-                        owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                        owl:onClass :BlockOfCoal
-                      ] ,
-                      [ rdf:type owl:Restriction ;
                         owl:onProperty :stackSize ;
-                        owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                        owl:onDataRange xsd:integer
+                        owl:hasValue "64"^^xsd:nonNegativeInteger
                       ] .
 
 
@@ -1287,8 +1204,7 @@
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :health ;
-                       owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                       owl:onDataRange xsd:integer
+                       owl:hasValue "3"^^xsd:nonNegativeInteger
                      ] .
 
 
@@ -1341,27 +1257,13 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :health ;
-                               owl:maxQualifiedCardinality "12"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "12"^^xsd:nonNegativeInteger
                              ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/CopperIngot
 :CopperIngot rdf:type owl:Class ;
              rdfs:subClassOf :Copper ,
-                             [ rdf:type owl:Class ;
-                               owl:unionOf ( [ rdf:type owl:Restriction ;
-                                               owl:onProperty :craftedWith ;
-                                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                               owl:onClass :BlockOfCopper
-                                             ]
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty :craftedWith ;
-                                               owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                                               owl:onClass :CopperNugget
-                                             ]
-                                           )
-                             ] ,
                              [ rdf:type owl:Class ;
                                owl:unionOf ( [ rdf:type owl:Restriction ;
                                                owl:onProperty :smeltedFrom ;
@@ -1376,18 +1278,16 @@
                                            )
                              ] ,
                              [ rdf:type owl:Restriction ;
+                               owl:onProperty :craftsInto ;
+                               owl:someValuesFrom :CopperNugget
+                             ] ,
+                             [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
                                owl:someValuesFrom :Common
                              ] ,
                              [ rdf:type owl:Restriction ;
-                               owl:onProperty :craftsInto ;
-                               owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                               owl:onClass :CopperNugget
-                             ] ,
-                             [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
-                               owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "64"^^xsd:nonNegativeInteger
                              ] .
 
 
@@ -1395,18 +1295,16 @@
 :CopperNugget rdf:type owl:Class ;
               rdfs:subClassOf :Copper ,
                               [ rdf:type owl:Restriction ;
+                                owl:onProperty :craftedWith ;
+                                owl:someValuesFrom :CopperIngot
+                              ] ,
+                              [ rdf:type owl:Restriction ;
                                 owl:onProperty :rarity ;
                                 owl:someValuesFrom :Common
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :craftedWith ;
-                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                owl:onClass :CopperIngot
-                              ] ,
-                              [ rdf:type owl:Restriction ;
                                 owl:onProperty :stackSize ;
-                                owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                owl:onDataRange xsd:integer
+                                owl:hasValue "64"^^xsd:nonNegativeInteger
                               ] .
 
 
@@ -1427,8 +1325,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -1464,8 +1361,7 @@
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :health ;
-                       owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
-                       owl:onDataRange xsd:integer
+                       owl:hasValue "10"^^xsd:nonNegativeInteger
                      ] .
 
 
@@ -1491,8 +1387,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :health ;
-                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "1"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -1518,8 +1413,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
-                           owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "20"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -1655,8 +1549,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
-                           owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "10"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -1698,13 +1591,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:minQualifiedCardinality "15"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :health ;
-                          owl:maxQualifiedCardinality "30"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "30"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -1730,18 +1617,15 @@
                          [ rdf:type owl:Class ;
                            owl:unionOf ( [ rdf:type owl:Restriction ;
                                            owl:onProperty :health ;
-                                           owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                                           owl:onDataRange xsd:integer
+                                           owl:hasValue "100"^^xsd:nonNegativeInteger
                                          ]
                                          [ rdf:type owl:Restriction ;
                                            owl:onProperty :health ;
-                                           owl:qualifiedCardinality "40"^^xsd:nonNegativeInteger ;
-                                           owl:onDataRange xsd:integer
+                                           owl:hasValue "20"^^xsd:nonNegativeInteger
                                          ]
                                          [ rdf:type owl:Restriction ;
                                            owl:onProperty :health ;
-                                           owl:qualifiedCardinality "100"^^xsd:nonNegativeInteger ;
-                                           owl:onDataRange xsd:integer
+                                           owl:hasValue "40"^^xsd:nonNegativeInteger
                                          ]
                                        )
                          ] ,
@@ -1829,8 +1713,7 @@
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :stackSize ;
-                       owl:maxQualifiedCardinality "16"^^xsd:nonNegativeInteger ;
-                       owl:onDataRange xsd:integer
+                       owl:hasValue "16"^^xsd:nonNegativeInteger
                      ] .
 
 
@@ -1908,8 +1791,7 @@
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :health ;
-                                 owl:qualifiedCardinality "80"^^xsd:nonNegativeInteger ;
-                                 owl:onDataRange xsd:integer
+                                 owl:hasValue "80"^^xsd:nonNegativeInteger
                                ] .
 
 
@@ -1925,14 +1807,8 @@
                            owl:someValuesFrom :EmeraldOre
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :craftedWith ;
-                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                           owl:onClass :BlockOfEmerald
-                         ] ,
-                         [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
-                           owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "64"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -1955,8 +1831,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
-                              owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "64"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -2005,8 +1880,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
-                              owl:maxQualifiedCardinality "16"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "16"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -2046,8 +1920,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :health ;
-                            owl:qualifiedCardinality "40"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "40"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -2066,8 +1939,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :health ;
-                             owl:qualifiedCardinality "8"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "8"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -2108,8 +1980,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "24"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "24"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -2122,8 +1993,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
-                           owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "64"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -2149,8 +2019,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
-                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "1"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -2163,8 +2032,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
-                         owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "64"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -2236,8 +2104,7 @@
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :health ;
-                       owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
-                       owl:onDataRange xsd:integer
+                       owl:hasValue "10"^^xsd:nonNegativeInteger
                      ] .
 
 
@@ -2255,8 +2122,7 @@
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :health ;
-                        owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
-                        owl:onDataRange xsd:integer
+                        owl:hasValue "10"^^xsd:nonNegativeInteger
                       ] .
 
 
@@ -2333,8 +2199,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
-                         owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "10"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -2347,8 +2212,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -2361,8 +2225,7 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
-                               owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "64"^^xsd:nonNegativeInteger
                              ] .
 
 
@@ -2375,8 +2238,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
-                              owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "64"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -2408,8 +2270,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :health ;
-                             owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "10"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -2422,8 +2283,7 @@
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :stackSize ;
-                                 owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                 owl:onDataRange xsd:integer
+                                 owl:hasValue "64"^^xsd:nonNegativeInteger
                                ] .
 
 
@@ -2459,8 +2319,7 @@
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :health ;
-                        owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
-                        owl:onDataRange xsd:integer
+                        owl:hasValue "10"^^xsd:nonNegativeInteger
                       ] .
 
 
@@ -2473,8 +2332,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
-                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "1"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -2486,19 +2344,6 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/GoldIngot
 :GoldIngot rdf:type owl:Class ;
            rdfs:subClassOf :Gold ,
-                           [ rdf:type owl:Class ;
-                             owl:unionOf ( [ rdf:type owl:Restriction ;
-                                             owl:onProperty :craftedWith ;
-                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                             owl:onClass :BlockOfGold
-                                           ]
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :craftedWith ;
-                                             owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                                             owl:onClass :GoldNugget
-                                           ]
-                                         )
-                           ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
                              owl:someValuesFrom :Common
@@ -2512,14 +2357,8 @@
                                                 ]
                            ] ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :craftsInto ;
-                             owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                             owl:onClass :GoldNugget
-                           ] ,
-                           [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -2527,18 +2366,16 @@
 :GoldNugget rdf:type owl:Class ;
             rdfs:subClassOf :Gold ,
                             [ rdf:type owl:Restriction ;
+                              owl:onProperty :craftedWith ;
+                              owl:someValuesFrom :GoldIngot
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
                               owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :craftedWith ;
-                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onClass :GoldIngot
-                            ] ,
-                            [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
-                              owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "64"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -2561,8 +2398,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
-                           owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "64"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -2588,18 +2424,15 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :damage ;
-                             owl:qualifiedCardinality "7"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "7"^^xsd:nonNegativeInteger
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :durability ;
-                             owl:qualifiedCardinality "32"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "32"^^xsd:nonNegativeInteger
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "1"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -2612,19 +2445,6 @@
 :Gravel rdf:type owl:Class ;
         rdfs:subClassOf :FullBlock ,
                         :Item ,
-                        [ rdf:type owl:Class ;
-                          owl:unionOf ( [ rdf:type owl:Restriction ;
-                                          owl:onProperty :dropsItem ;
-                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onClass :Flint
-                                        ]
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :dropsItem ;
-                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onClass :Gravel
-                                        ]
-                                      )
-                        ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :harvestedWith ;
                           owl:someValuesFrom :Shovel
@@ -2634,9 +2454,13 @@
                           owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
+                          owl:onProperty :dropsItem ;
+                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Flint
+                        ] ,
+                        [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
-                          owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "64"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -2711,8 +2535,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :health ;
-                            owl:qualifiedCardinality "30"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "30"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -2725,8 +2548,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -2744,8 +2566,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :health ;
-                              owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "20"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -2753,6 +2574,10 @@
 :HayBale rdf:type owl:Class ;
          rdfs:subClassOf :FullBlock ,
                          :Item ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :craftedWith ;
+                           owl:someValuesFrom :Wheat
+                         ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :harvestedWith ;
                            owl:someValuesFrom :Hoe
@@ -2762,19 +2587,8 @@
                            owl:someValuesFrom :Common
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :craftsInto ;
-                           owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                           owl:onClass :Wheat
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :dropsItem ;
-                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                           owl:onClass :HayBale
-                         ] ,
-                         [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
-                           owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "64"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -2827,8 +2641,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "40"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "40"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -2846,8 +2659,7 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
-                               owl:qualifiedCardinality "16"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "16"^^xsd:nonNegativeInteger
                              ] .
 
 
@@ -2887,13 +2699,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
-                         owl:minQualifiedCardinality "15"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :health ;
-                         owl:maxQualifiedCardinality "30"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "30"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -2946,18 +2752,15 @@
                       [ rdf:type owl:Class ;
                         owl:unionOf ( [ rdf:type owl:Restriction ;
                                         owl:onProperty :health ;
-                                        owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                                        owl:onDataRange xsd:integer
+                                        owl:hasValue "100"^^xsd:nonNegativeInteger
                                       ]
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty :health ;
-                                        owl:qualifiedCardinality "40"^^xsd:nonNegativeInteger ;
-                                        owl:onDataRange xsd:integer
+                                        owl:hasValue "20"^^xsd:nonNegativeInteger
                                       ]
                                       [ rdf:type owl:Restriction ;
                                         owl:onProperty :health ;
-                                        owl:qualifiedCardinality "100"^^xsd:nonNegativeInteger ;
-                                        owl:onDataRange xsd:integer
+                                        owl:hasValue "40"^^xsd:nonNegativeInteger
                                       ]
                                     )
                       ] ,
@@ -3003,8 +2806,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
-                          owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "64"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -3053,27 +2855,13 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :health ;
-                             owl:qualifiedCardinality "100"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "100"^^xsd:nonNegativeInteger
                            ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/IronIngot
 :IronIngot rdf:type owl:Class ;
            rdfs:subClassOf :Iron ,
-                           [ rdf:type owl:Class ;
-                             owl:unionOf ( [ rdf:type owl:Restriction ;
-                                             owl:onProperty :craftedWith ;
-                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                             owl:onClass :BlockOfIron
-                                           ]
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :craftedWith ;
-                                             owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                                             owl:onClass :IronNugget
-                                           ]
-                                         )
-                           ] ,
                            [ rdf:type owl:Class ;
                              owl:unionOf ( [ rdf:type owl:Restriction ;
                                              owl:onProperty :smeltedFrom ;
@@ -3088,18 +2876,16 @@
                                          )
                            ] ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :craftsInto ;
+                             owl:someValuesFrom :IronNugget
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
                              owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :craftsInto ;
-                             owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                             owl:onClass :IronNugget
-                           ] ,
-                           [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -3107,18 +2893,16 @@
 :IronNugget rdf:type owl:Class ;
             rdfs:subClassOf :Iron ,
                             [ rdf:type owl:Restriction ;
+                              owl:onProperty :craftedWith ;
+                              owl:someValuesFrom :IronIngot
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
                               owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :craftedWith ;
-                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onClass :IronIngot
-                            ] ,
-                            [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
-                              owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "64"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -3134,9 +2918,13 @@
                            owl:someValuesFrom :Common
                          ] ,
                          [ rdf:type owl:Restriction ;
+                           owl:onProperty :dropsItem ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass :RawIron
+                         ] ,
+                         [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
-                           owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "64"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -3176,8 +2964,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
-                           owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "64"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -3195,14 +2982,13 @@
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :stackSize ;
-                                   owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                   owl:onDataRange xsd:integer
+                                   owl:hasValue "64"^^xsd:nonNegativeInteger
                                  ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/LingeringPotion
 :LingeringPotion rdf:type owl:Class ;
-                 rdfs:subClassOf :SplashPotion ,
+                 rdfs:subClassOf :Potion ,
                                  :Throwable ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :craftedWith ;
@@ -3238,19 +3024,6 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Llama
 :Llama rdf:type owl:Class ;
        rdfs:subClassOf :Animal ,
-                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                owl:onProperty :health ;
-                                                owl:minQualifiedCardinality "15"^^xsd:nonNegativeInteger ;
-                                                owl:onDataRange xsd:integer
-                                              ]
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :health ;
-                                                owl:maxQualifiedCardinality "30"^^xsd:nonNegativeInteger ;
-                                                owl:onDataRange xsd:integer
-                                              ]
-                                            ) ;
-                         rdf:type owl:Class
-                       ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :behaves ;
                          owl:someValuesFrom :Neutral
@@ -3281,6 +3054,10 @@
                          owl:onProperty :dropsItem ;
                          owl:maxQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
                          owl:onClass :Leather
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :health ;
+                         owl:hasValue "30"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -3288,6 +3065,10 @@
 :Log rdf:type owl:Class ;
      rdfs:subClassOf :FullBlock ,
                      :Item ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :craftsInto ;
+                       owl:someValuesFrom :Plank
+                     ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :harvestedWith ;
                        owl:someValuesFrom :Axe
@@ -3297,19 +3078,8 @@
                        owl:someValuesFrom :Common
                      ] ,
                      [ rdf:type owl:Restriction ;
-                       owl:onProperty :craftsInto ;
-                       owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
-                       owl:onClass :Plank
-                     ] ,
-                     [ rdf:type owl:Restriction ;
-                       owl:onProperty :dropsItem ;
-                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                       owl:onClass :Log
-                     ] ,
-                     [ rdf:type owl:Restriction ;
                        owl:onProperty :stackSize ;
-                       owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                       owl:onDataRange xsd:integer
+                       owl:hasValue "64"^^xsd:nonNegativeInteger
                      ] .
 
 
@@ -3340,8 +3110,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
-                              owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "64"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -3351,18 +3120,15 @@
                            [ rdf:type owl:Class ;
                              owl:unionOf ( [ rdf:type owl:Restriction ;
                                              owl:onProperty :health ;
-                                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                             owl:onDataRange xsd:integer
+                                             owl:hasValue "1"^^xsd:nonNegativeInteger
                                            ]
                                            [ rdf:type owl:Restriction ;
                                              owl:onProperty :health ;
-                                             owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
-                                             owl:onDataRange xsd:integer
+                                             owl:hasValue "16"^^xsd:nonNegativeInteger
                                            ]
                                            [ rdf:type owl:Restriction ;
                                              owl:onProperty :health ;
-                                             owl:qualifiedCardinality "16"^^xsd:nonNegativeInteger ;
-                                             owl:onDataRange xsd:integer
+                                             owl:hasValue "4"^^xsd:nonNegativeInteger
                                            ]
                                          )
                            ] ,
@@ -3457,8 +3223,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :health ;
-                             owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "10"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -3476,13 +3241,7 @@
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :health ;
-                        owl:minQualifiedCardinality "15"^^xsd:nonNegativeInteger ;
-                        owl:onDataRange xsd:integer
-                      ] ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :health ;
-                        owl:maxQualifiedCardinality "30"^^xsd:nonNegativeInteger ;
-                        owl:onDataRange xsd:integer
+                        owl:hasValue "30"^^xsd:nonNegativeInteger
                       ] .
 
 
@@ -3540,8 +3299,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :health ;
-                            owl:qualifiedCardinality "15"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "15"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -3554,8 +3312,7 @@
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :stackSize ;
-                                 owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                 owl:onDataRange xsd:integer
+                                 owl:hasValue "64"^^xsd:nonNegativeInteger
                                ] .
 
 
@@ -3577,8 +3334,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
-                              owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "64"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -3642,8 +3398,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "10"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -3727,8 +3482,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
-                         owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "20"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -3768,8 +3522,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
-                           owl:qualifiedCardinality "16"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "16"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -3800,8 +3553,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "6"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "6"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -3842,8 +3594,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
-                           owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "20"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -3856,8 +3607,7 @@
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :stackSize ;
-                                   owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                   owl:onDataRange xsd:integer
+                                   owl:hasValue "64"^^xsd:nonNegativeInteger
                                  ] .
 
 
@@ -3893,8 +3643,7 @@
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :health ;
-                       owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
-                       owl:onDataRange xsd:integer
+                       owl:hasValue "10"^^xsd:nonNegativeInteger
                      ] .
 
 
@@ -3920,8 +3669,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "16"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "16"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -3943,8 +3691,7 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :health ;
-                               owl:qualifiedCardinality "50"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "50"^^xsd:nonNegativeInteger
                              ] .
 
 
@@ -3984,8 +3731,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :health ;
-                            owl:qualifiedCardinality "24"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "24"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -4003,18 +3749,12 @@
        rdfs:subClassOf :FullBlock ,
                        :Item ,
                        [ rdf:type owl:Restriction ;
+                         owl:onProperty :craftedWith ;
+                         owl:someValuesFrom :Log
+                       ] ,
+                       [ rdf:type owl:Restriction ;
                          owl:onProperty :harvestedWith ;
                          owl:someValuesFrom :Axe
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :craftedWith ;
-                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Log
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :dropsItem ;
-                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                         owl:onClass :Plank
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :rarity ;
@@ -4023,8 +3763,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
-                         owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "64"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -4070,8 +3809,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :health ;
-                             owl:qualifiedCardinality "30"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "30"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -4084,8 +3822,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
-                         owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "64"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -4098,8 +3835,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
-                          owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "64"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -4112,8 +3848,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
-                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "1"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -4141,8 +3876,7 @@
                                     ] ,
                                     [ rdf:type owl:Restriction ;
                                       owl:onProperty :stackSize ;
-                                      owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                      owl:onDataRange xsd:integer
+                                      owl:hasValue "64"^^xsd:nonNegativeInteger
                                     ] .
 
 
@@ -4155,8 +3889,7 @@
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :stackSize ;
-                                   owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                   owl:onDataRange xsd:integer
+                                   owl:hasValue "64"^^xsd:nonNegativeInteger
                                  ] .
 
 
@@ -4167,8 +3900,7 @@
                             :Eatable ,
                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                      owl:onProperty :dropsItem ;
-                                                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                     owl:onClass :Pufferfish
+                                                     owl:someValuesFrom :Pufferfish
                                                    ]
                                                    [ rdf:type owl:Restriction ;
                                                      owl:onProperty :dropsItem ;
@@ -4202,8 +3934,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :health ;
-                              owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "3"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -4269,8 +4000,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "3"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -4283,8 +4013,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
-                              owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "64"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -4297,8 +4026,7 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
-                               owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "64"^^xsd:nonNegativeInteger
                              ] .
 
 
@@ -4329,8 +4057,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
-                           owl:qualifiedCardinality "100"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "100"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -4343,8 +4070,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
-                           owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "64"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -4357,8 +4083,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
-                              owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "64"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -4371,8 +4096,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
-                          owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "64"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -4385,8 +4109,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -4399,8 +4122,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
-                           owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "64"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -4413,8 +4135,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
-                           owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "64"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -4427,8 +4148,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -4441,8 +4161,7 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
-                               owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "64"^^xsd:nonNegativeInteger
                              ] .
 
 
@@ -4455,8 +4174,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -4469,8 +4187,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -4480,23 +4197,19 @@
                         [ rdf:type owl:Class ;
                           owl:unionOf ( [ rdf:type owl:Restriction ;
                                           owl:onProperty :craftedWith ;
-                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onClass :Beetroot
+                                          owl:someValuesFrom :Beetroot
                                         ]
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty :craftedWith ;
-                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onClass :Poppy
+                                          owl:someValuesFrom :Poppy
                                         ]
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty :craftedWith ;
-                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onClass :RedTulip
+                                          owl:someValuesFrom :RedTulip
                                         ]
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty :craftedWith ;
-                                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                          owl:onClass :RoseBush
+                                          owl:someValuesFrom :RoseBush
                                         ]
                                       )
                         ] ,
@@ -4506,8 +4219,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
-                          owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "64"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -4520,8 +4232,7 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
-                               owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "64"^^xsd:nonNegativeInteger
                              ] .
 
 
@@ -4534,8 +4245,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
-                            owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "64"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -4565,14 +4275,8 @@
                            owl:someValuesFrom :Common
                          ] ,
                          [ rdf:type owl:Restriction ;
-                           owl:onProperty :dropsItem ;
-                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                           owl:onClass :RedWool
-                         ] ,
-                         [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
-                           owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "64"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -4580,6 +4284,14 @@
 :RedstoneBlock rdf:type owl:Class ;
                rdfs:subClassOf :FullBlock ,
                                :Item ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :craftedWith ;
+                                 owl:someValuesFrom :RedstoneDust
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :craftsInto ;
+                                 owl:someValuesFrom :RedstoneDust
+                               ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :harvestedWith ;
                                  owl:someValuesFrom :Pickaxe
@@ -4589,24 +4301,8 @@
                                  owl:someValuesFrom :Common
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :craftedWith ;
-                                 owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                                 owl:onClass :RedstoneDust
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :craftsInto ;
-                                 owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                                 owl:onClass :RedstoneDust
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :dropsItem ;
-                                 owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                 owl:onClass :RedstoneBlock
-                               ] ,
-                               [ rdf:type owl:Restriction ;
                                  owl:onProperty :stackSize ;
-                                 owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                 owl:onDataRange xsd:integer
+                                 owl:hasValue "64"^^xsd:nonNegativeInteger
                                ] .
 
 
@@ -4614,18 +4310,16 @@
 :RedstoneDust rdf:type owl:Class ;
               rdfs:subClassOf :Item ,
                               [ rdf:type owl:Restriction ;
+                                owl:onProperty :craftedWith ;
+                                owl:someValuesFrom :RedstoneBlock
+                              ] ,
+                              [ rdf:type owl:Restriction ;
                                 owl:onProperty :rarity ;
                                 owl:someValuesFrom :Common
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :craftedWith ;
-                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                owl:onClass :RedstoneBlock
-                              ] ,
-                              [ rdf:type owl:Restriction ;
                                 owl:onProperty :stackSize ;
-                                owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                owl:onDataRange xsd:integer
+                                owl:hasValue "64"^^xsd:nonNegativeInteger
                               ] .
 
 
@@ -4642,18 +4336,16 @@
 :RoseBush rdf:type owl:Class ;
           rdfs:subClassOf :Flower ,
                           [ rdf:type owl:Restriction ;
+                            owl:onProperty :craftsInto ;
+                            owl:someValuesFrom :RedDye
+                          ] ,
+                          [ rdf:type owl:Restriction ;
                             owl:onProperty :rarity ;
                             owl:someValuesFrom :Common
                           ] ,
                           [ rdf:type owl:Restriction ;
-                            owl:onProperty :craftsInto ;
-                            owl:qualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                            owl:onClass :RedDye
-                          ] ,
-                          [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
-                            owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "64"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -4666,8 +4358,7 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :stackSize ;
-                               owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "64"^^xsd:nonNegativeInteger
                              ] .
 
 
@@ -4680,8 +4371,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
-                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "1"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -4728,8 +4418,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "3"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -4764,14 +4453,8 @@
                                  owl:someValuesFrom :Common
                                ] ,
                                [ rdf:type owl:Restriction ;
-                                 owl:onProperty :dropsItem ;
-                                 owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                                 owl:onClass :Item
-                               ] ,
-                               [ rdf:type owl:Restriction ;
                                  owl:onProperty :stackSize ;
-                                 owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                 owl:onDataRange xsd:integer
+                                 owl:hasValue "64"^^xsd:nonNegativeInteger
                                ] .
 
 
@@ -4784,8 +4467,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
-                            owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "64"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -4803,13 +4485,11 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :durability ;
-                          owl:qualifiedCardinality "238"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "238"^^xsd:nonNegativeInteger
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
-                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "1"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -4845,8 +4525,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
-                         owl:qualifiedCardinality "8"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "8"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -4873,8 +4552,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
-                           owl:qualifiedCardinality "30"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "30"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -4887,8 +4565,7 @@
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :stackSize ;
-                                owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                owl:onDataRange xsd:integer
+                                owl:hasValue "64"^^xsd:nonNegativeInteger
                               ] .
 
 
@@ -4915,8 +4592,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :health ;
-                              owl:qualifiedCardinality "8"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "8"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -4959,8 +4635,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :health ;
-                            owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "20"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -4980,8 +4655,7 @@
                                ] ,
                                [ rdf:type owl:Restriction ;
                                  owl:onProperty :health ;
-                                 owl:qualifiedCardinality "15"^^xsd:nonNegativeInteger ;
-                                 owl:onDataRange xsd:integer
+                                 owl:hasValue "15"^^xsd:nonNegativeInteger
                                ] .
 
 
@@ -4991,23 +4665,19 @@
                        [ rdf:type owl:Class ;
                          owl:unionOf ( [ rdf:type owl:Restriction ;
                                          owl:onProperty :health ;
-                                         owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                         owl:onDataRange xsd:integer
+                                         owl:hasValue "1"^^xsd:nonNegativeInteger
                                        ]
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :health ;
-                                         owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
-                                         owl:onDataRange xsd:integer
+                                         owl:hasValue "16"^^xsd:nonNegativeInteger
                                        ]
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :health ;
-                                         owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                                         owl:onDataRange xsd:integer
+                                         owl:hasValue "4"^^xsd:nonNegativeInteger
                                        ]
                                        [ rdf:type owl:Restriction ;
                                          owl:onProperty :health ;
-                                         owl:qualifiedCardinality "16"^^xsd:nonNegativeInteger ;
-                                         owl:onDataRange xsd:integer
+                                         owl:hasValue "9"^^xsd:nonNegativeInteger
                                        ]
                                      )
                        ] ,
@@ -5043,23 +4713,20 @@
             rdfs:subClassOf :FullBlock ,
                             :Item ,
                             [ rdf:type owl:Restriction ;
+                              owl:onProperty :craftedWith ;
+                              owl:someValuesFrom :Slimeball
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :craftsInto ;
+                              owl:someValuesFrom :Slimeball
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
                               owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :craftedWith ;
-                              owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                              owl:onClass :Slimeball
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :craftsInto ;
-                              owl:qualifiedCardinality "9"^^xsd:nonNegativeInteger ;
-                              owl:onClass :Slimeball
-                            ] ,
-                            [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
-                              owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "64"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -5067,18 +4734,16 @@
 :Slimeball rdf:type owl:Class ;
            rdfs:subClassOf :Item ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :craftedWith ;
+                             owl:someValuesFrom :SlimeBlock
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
                              owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :craftedWith ;
-                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass :SlimeBlock
-                           ] ,
-                           [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -5105,8 +4770,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
-                           owl:qualifiedCardinality "14"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "14"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -5124,8 +4788,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :health ;
-                             owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "4"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -5138,8 +4801,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
-                            owl:maxQualifiedCardinality "16"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "16"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -5217,8 +4879,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "16"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "16"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -5231,8 +4892,7 @@
                            ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -5328,8 +4988,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
-                         owl:qualifiedCardinality "10"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "10"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -5355,8 +5014,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
-                         owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "64"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -5431,8 +5089,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
-                         owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "20"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -5466,8 +5123,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
-                           owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "20"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -5484,14 +5140,8 @@
                           owl:someValuesFrom :Common
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :dropsItem ;
-                          owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                          owl:onClass :String
-                        ] ,
-                        [ rdf:type owl:Restriction ;
                           owl:onProperty :stackSize ;
-                          owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "64"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -5517,8 +5167,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
-                         owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "64"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -5531,14 +5180,8 @@
                              owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :craftsInto ;
-                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass :Sugar
-                           ] ,
-                           [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -5558,13 +5201,11 @@
                             [ rdf:type owl:Class ;
                               owl:unionOf ( [ rdf:type owl:Restriction ;
                                               owl:onProperty :health ;
-                                              owl:qualifiedCardinality "4"^^xsd:nonNegativeInteger ;
-                                              owl:onDataRange xsd:integer
+                                              owl:hasValue "4"^^xsd:nonNegativeInteger
                                             ]
                                             [ rdf:type owl:Restriction ;
                                               owl:onProperty :health ;
-                                              owl:qualifiedCardinality "8"^^xsd:nonNegativeInteger ;
-                                              owl:onDataRange xsd:integer
+                                              owl:hasValue "8"^^xsd:nonNegativeInteger
                                             ]
                                           )
                             ] ,
@@ -5625,8 +5266,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :health ;
-                           owl:qualifiedCardinality "6"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "6"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -5673,18 +5313,26 @@
       rdfs:subClassOf :Item .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/ToolMaterial
+:ToolMaterial rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty [ owl:inverseOf :craftedWith
+                                                   ] ;
+                                    owl:someValuesFrom :Tool
+                                  ] ;
+              rdfs:subClassOf :Item .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/TotemOfUndying
 :TotemOfUndying rdf:type owl:Class ;
                 rdfs:subClassOf :Item ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :rarity ;
-                                  owl:qualifiedCardinality "0"^^xsd:nonNegativeInteger ;
-                                  owl:onClass :Uncommon
+                                  owl:allValuesFrom :Uncommon
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :stackSize ;
-                                  owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                  owl:onDataRange xsd:integer
+                                  owl:hasValue "1"^^xsd:nonNegativeInteger
                                 ] .
 
 
@@ -5730,8 +5378,7 @@
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :stackSize ;
-                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                           owl:onDataRange xsd:integer
+                           owl:hasValue "1"^^xsd:nonNegativeInteger
                          ] .
 
 
@@ -5745,19 +5392,12 @@
                                 owl:someValuesFrom :Passive
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :rarity ;
-                                owl:someValuesFrom :Common
+                                owl:onProperty :dropsItem ;
+                                owl:someValuesFrom :TropicalFish
                               ] ,
                               [ rdf:type owl:Restriction ;
-                                owl:onProperty :spawnsIn ;
-                                owl:someValuesFrom [ rdf:type owl:Class ;
-                                                     owl:unionOf ( :DeepLukewarmOcean
-                                                                   :LukewarmOcean
-                                                                   :LushCaves
-                                                                   :MangroveSwamp
-                                                                   :WarmOcean
-                                                                 )
-                                                   ]
+                                owl:onProperty :rarity ;
+                                owl:someValuesFrom :Common
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :spawnsIn ;
@@ -5772,23 +5412,16 @@
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :dropsItem ;
-                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                owl:onClass :TropicalFish
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :dropsItem ;
                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
                                 owl:onClass :BoneMeal
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :health ;
-                                owl:qualifiedCardinality "3"^^xsd:nonNegativeInteger ;
-                                owl:onDataRange xsd:integer
+                                owl:hasValue "3"^^xsd:nonNegativeInteger
                               ] ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :stackSize ;
-                                owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                owl:onDataRange xsd:integer
+                                owl:hasValue "64"^^xsd:nonNegativeInteger
                               ] .
 
 
@@ -5820,8 +5453,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "30"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "30"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -5849,8 +5481,7 @@
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :health ;
-                       owl:qualifiedCardinality "14"^^xsd:nonNegativeInteger ;
-                       owl:onDataRange xsd:integer
+                       owl:hasValue "14"^^xsd:nonNegativeInteger
                      ] .
 
 
@@ -5896,8 +5527,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :health ;
-                            owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "20"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -5924,8 +5554,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :health ;
-                              owl:qualifiedCardinality "24"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "24"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -5951,8 +5580,7 @@
                                  ] ,
                                  [ rdf:type owl:Restriction ;
                                    owl:onProperty :health ;
-                                   owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                                   owl:onDataRange xsd:integer
+                                   owl:hasValue "20"^^xsd:nonNegativeInteger
                                  ] .
 
 
@@ -5979,8 +5607,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "500"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "500"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -6026,14 +5653,8 @@
                              owl:someValuesFrom :Hoe
                            ] ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :dropsItem ;
-                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass :WetSponge
-                           ] ,
-                           [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -6046,8 +5667,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :stackSize ;
-                         owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "64"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -6057,13 +5677,11 @@
                           [ rdf:type owl:Class ;
                             owl:unionOf ( [ rdf:type owl:Restriction ;
                                             owl:onProperty :craftedWith ;
-                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                            owl:onClass :BoneMeal
+                                            owl:someValuesFrom :BoneMeal
                                           ]
                                           [ rdf:type owl:Restriction ;
                                             owl:onProperty :craftedWith ;
-                                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                            owl:onClass :LilyOfTheValley
+                                            owl:someValuesFrom :LilyOfTheValley
                                           ]
                                         )
                           ] ,
@@ -6073,8 +5691,7 @@
                           ] ,
                           [ rdf:type owl:Restriction ;
                             owl:onProperty :stackSize ;
-                            owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                            owl:onDataRange xsd:integer
+                            owl:hasValue "64"^^xsd:nonNegativeInteger
                           ] .
 
 
@@ -6112,14 +5729,8 @@
                              owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :dropsItem ;
-                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                             owl:onClass :WhiteWool
-                           ] ,
-                           [ rdf:type owl:Restriction ;
                              owl:onProperty :stackSize ;
-                             owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                             owl:onDataRange xsd:integer
+                             owl:hasValue "64"^^xsd:nonNegativeInteger
                            ] .
 
 
@@ -6137,8 +5748,7 @@
                             ] ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
-                              owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "64"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -6181,48 +5791,33 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Witch
 :Witch rdf:type owl:Class ;
        rdfs:subClassOf :Monster ,
-                       [ owl:intersectionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty :dropsItem ;
-                                                                       owl:minQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
-                                                                       owl:onClass :RedstoneDust
-                                                                     ]
-                                                                     [ rdf:type owl:Restriction ;
-                                                                       owl:onProperty :dropsItem ;
-                                                                       owl:maxQualifiedCardinality "8"^^xsd:nonNegativeInteger ;
-                                                                       owl:onClass :RedstoneDust
-                                                                     ]
-                                                                   ) ;
-                                                rdf:type owl:Class
+                       [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                owl:onProperty :dropsItem ;
+                                                owl:someValuesFrom :GlassBottle
                                               ]
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty :dropsItem ;
-                                                owl:maxQualifiedCardinality "6"^^xsd:nonNegativeInteger ;
-                                                owl:onClass :GlassBottle
+                                                owl:someValuesFrom :GlowstoneDust
                                               ]
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty :dropsItem ;
-                                                owl:maxQualifiedCardinality "6"^^xsd:nonNegativeInteger ;
-                                                owl:onClass :GlowstoneDust
+                                                owl:someValuesFrom :Gunpowder
                                               ]
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty :dropsItem ;
-                                                owl:maxQualifiedCardinality "6"^^xsd:nonNegativeInteger ;
-                                                owl:onClass :Gunpowder
+                                                owl:someValuesFrom :RedstoneDust
                                               ]
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty :dropsItem ;
-                                                owl:maxQualifiedCardinality "6"^^xsd:nonNegativeInteger ;
-                                                owl:onClass :SpiderEye
+                                                owl:someValuesFrom :SpiderEye
                                               ]
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty :dropsItem ;
-                                                owl:maxQualifiedCardinality "6"^^xsd:nonNegativeInteger ;
-                                                owl:onClass :Stick
+                                                owl:someValuesFrom :Stick
                                               ]
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty :dropsItem ;
-                                                owl:maxQualifiedCardinality "6"^^xsd:nonNegativeInteger ;
-                                                owl:onClass :Sugar
+                                                owl:someValuesFrom :Sugar
                                               ]
                                             ) ;
                          rdf:type owl:Class
@@ -6241,8 +5836,7 @@
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :health ;
-                         owl:qualifiedCardinality "26"^^xsd:nonNegativeInteger ;
-                         owl:onDataRange xsd:integer
+                         owl:hasValue "26"^^xsd:nonNegativeInteger
                        ] .
 
 
@@ -6270,8 +5864,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "300"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "300"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -6279,18 +5872,16 @@
 :WitherRose rdf:type owl:Class ;
             rdfs:subClassOf :Flower ,
                             [ rdf:type owl:Restriction ;
+                              owl:onProperty :craftsInto ;
+                              owl:someValuesFrom :BlackDye
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
                               owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
-                              owl:onProperty :craftsInto ;
-                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                              owl:onClass :BlackDye
-                            ] ,
-                            [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
-                              owl:maxQualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                              owl:onDataRange xsd:integer
+                              owl:hasValue "64"^^xsd:nonNegativeInteger
                             ] .
 
 
@@ -6330,8 +5921,7 @@
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :health ;
-                                  owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                                  owl:onDataRange xsd:integer
+                                  owl:hasValue "20"^^xsd:nonNegativeInteger
                                 ] .
 
 
@@ -6348,14 +5938,8 @@
                                        owl:someValuesFrom :Rare
                                      ] ,
                                      [ rdf:type owl:Restriction ;
-                                       owl:onProperty :dropsItem ;
-                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                       owl:onClass :WitherSkeletonSkull
-                                     ] ,
-                                     [ rdf:type owl:Restriction ;
                                        owl:onProperty :stackSize ;
-                                       owl:qualifiedCardinality "64"^^xsd:nonNegativeInteger ;
-                                       owl:onDataRange xsd:integer
+                                       owl:hasValue "64"^^xsd:nonNegativeInteger
                                      ] .
 
 
@@ -6403,8 +5987,7 @@
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :health ;
-                        owl:qualifiedCardinality "8"^^xsd:nonNegativeInteger ;
-                        owl:onDataRange xsd:integer
+                        owl:hasValue "8"^^xsd:nonNegativeInteger
                       ] .
 
 
@@ -6419,7 +6002,7 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Wool
 :Wool rdf:type owl:Class ;
-      rdfs:subClassOf :Item .
+      rdfs:subClassOf :FullBlock .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Zoglin
@@ -6445,8 +6028,7 @@
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
-                          owl:qualifiedCardinality "40"^^xsd:nonNegativeInteger ;
-                          owl:onDataRange xsd:integer
+                          owl:hasValue "40"^^xsd:nonNegativeInteger
                         ] .
 
 
@@ -6485,18 +6067,15 @@
                         [ rdf:type owl:Class ;
                           owl:unionOf ( [ rdf:type owl:Restriction ;
                                           owl:onProperty :health ;
-                                          owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                                          owl:onDataRange xsd:integer
+                                          owl:hasValue "100"^^xsd:nonNegativeInteger
                                         ]
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty :health ;
-                                          owl:qualifiedCardinality "40"^^xsd:nonNegativeInteger ;
-                                          owl:onDataRange xsd:integer
+                                          owl:hasValue "20"^^xsd:nonNegativeInteger
                                         ]
                                         [ rdf:type owl:Restriction ;
                                           owl:onProperty :health ;
-                                          owl:qualifiedCardinality "100"^^xsd:nonNegativeInteger ;
-                                          owl:onDataRange xsd:integer
+                                          owl:hasValue "40"^^xsd:nonNegativeInteger
                                         ]
                                       )
                         ] ,
@@ -6518,7 +6097,6 @@
 :ZombieHorse rdf:type owl:Class ;
              rdfs:subClassOf :Monster ,
                              :Undead ,
-                             :Wolf ,
                              [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                       owl:onProperty :dropsItem ;
                                                       owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
@@ -6562,8 +6140,7 @@
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :health ;
-                               owl:qualifiedCardinality "25"^^xsd:nonNegativeInteger ;
-                               owl:onDataRange xsd:integer
+                               owl:hasValue "25"^^xsd:nonNegativeInteger
                              ] .
 
 
@@ -6616,8 +6193,7 @@
                                 ] ,
                                 [ rdf:type owl:Restriction ;
                                   owl:onProperty :health ;
-                                  owl:qualifiedCardinality "15"^^xsd:nonNegativeInteger ;
-                                  owl:onDataRange xsd:integer
+                                  owl:hasValue "15"^^xsd:nonNegativeInteger
                                 ] .
 
 
@@ -6651,18 +6227,15 @@
                                 [ rdf:type owl:Class ;
                                   owl:unionOf ( [ rdf:type owl:Restriction ;
                                                   owl:onProperty :health ;
-                                                  owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                                                  owl:onDataRange xsd:integer
+                                                  owl:hasValue "100"^^xsd:nonNegativeInteger
                                                 ]
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty :health ;
-                                                  owl:qualifiedCardinality "40"^^xsd:nonNegativeInteger ;
-                                                  owl:onDataRange xsd:integer
+                                                  owl:hasValue "20"^^xsd:nonNegativeInteger
                                                 ]
                                                 [ rdf:type owl:Restriction ;
                                                   owl:onProperty :health ;
-                                                  owl:qualifiedCardinality "100"^^xsd:nonNegativeInteger ;
-                                                  owl:onDataRange xsd:integer
+                                                  owl:hasValue "40"^^xsd:nonNegativeInteger
                                                 ]
                                               )
                                 ] ,
@@ -6697,18 +6270,15 @@
                                   [ rdf:type owl:Class ;
                                     owl:unionOf ( [ rdf:type owl:Restriction ;
                                                     owl:onProperty :health ;
-                                                    owl:qualifiedCardinality "20"^^xsd:nonNegativeInteger ;
-                                                    owl:onDataRange xsd:integer
+                                                    owl:hasValue "100"^^xsd:nonNegativeInteger
                                                   ]
                                                   [ rdf:type owl:Restriction ;
                                                     owl:onProperty :health ;
-                                                    owl:qualifiedCardinality "40"^^xsd:nonNegativeInteger ;
-                                                    owl:onDataRange xsd:integer
+                                                    owl:hasValue "20"^^xsd:nonNegativeInteger
                                                   ]
                                                   [ rdf:type owl:Restriction ;
                                                     owl:onProperty :health ;
-                                                    owl:qualifiedCardinality "100"^^xsd:nonNegativeInteger ;
-                                                    owl:onDataRange xsd:integer
+                                                    owl:hasValue "40"^^xsd:nonNegativeInteger
                                                   ]
                                                 )
                                   ] ,
@@ -6762,8 +6332,7 @@
                       ] ,
                       [ rdf:type owl:Restriction ;
                         owl:onProperty :health ;
-                        owl:qualifiedCardinality "200"^^xsd:nonNegativeInteger ;
-                        owl:onDataRange xsd:integer
+                        owl:hasValue "200"^^xsd:nonNegativeInteger
                       ] .
 
 

@@ -82,6 +82,8 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/indirectResourceFor
 :indirectResourceFor rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Mob ;
+                     rdfs:range :Item ;
                      owl:propertyChainAxiom ( :dropsItem
                                               [ owl:inverseOf :craftedWith
                                               ]
@@ -3502,13 +3504,13 @@
                                                                    owl:someValuesFrom [ rdf:type owl:Restriction ;
                                                                                         owl:onProperty [ owl:inverseOf :dropsItem
                                                                                                        ] ;
-                                                                                        owl:someValuesFrom :Animal
+                                                                                        owl:someValuesFrom :Mob
                                                                                       ]
                                                                  ]
                                                                  [ rdf:type owl:Restriction ;
                                                                    owl:onProperty [ owl:inverseOf :dropsItem
                                                                                   ] ;
-                                                                   owl:someValuesFrom :Animal
+                                                                   owl:someValuesFrom :Mob
                                                                  ]
                                                                )
                                                  ]
@@ -4326,7 +4328,6 @@
 :Pufferfish rdf:type owl:Class ;
             rdfs:subClassOf :Animal ,
                             :Aquatic ,
-                            :Eatable ,
                             [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
                                                      owl:onProperty :dropsItem ;
                                                      owl:someValuesFrom :Pufferfish
@@ -6006,7 +6007,6 @@
 :TropicalFish rdf:type owl:Class ;
               rdfs:subClassOf :Animal ,
                               :Aquatic ,
-                              :Eatable ,
                               [ rdf:type owl:Restriction ;
                                 owl:onProperty :behaves ;
                                 owl:someValuesFrom :Passive

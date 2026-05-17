@@ -60,8 +60,7 @@
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/dropsItem
-:dropsItem rdf:type owl:ObjectProperty ,
-                    owl:InverseFunctionalProperty ;
+:dropsItem rdf:type owl:ObjectProperty ;
            rdfs:domain :Mob ;
            rdfs:range :Item .
 
@@ -552,15 +551,6 @@
                        owl:onProperty :health ;
                        owl:hasValue "10"^^xsd:nonNegativeInteger
                      ] .
-
-
-###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Beef
-:Beef rdf:type owl:Class ;
-      rdfs:subClassOf :Eatable ,
-                      [ rdf:type owl:Restriction ;
-                        owl:onProperty :smeltedFrom ;
-                        owl:someValuesFrom :RawBeef
-                      ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Beetroot
@@ -1118,10 +1108,6 @@
                            :Monster ,
                            :Undead ,
                            [ rdf:type owl:Restriction ;
-                             owl:onProperty :behaves ;
-                             owl:someValuesFrom :Passive
-                           ] ,
-                           [ rdf:type owl:Restriction ;
                              owl:onProperty :spawnsIn ;
                              owl:someValuesFrom :Desert
                            ] ,
@@ -1267,14 +1253,9 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Chicken
 :Chicken rdf:type owl:Class ;
          rdfs:subClassOf :Animal ,
-                         :Eatable ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :behaves ;
                            owl:someValuesFrom :Passive
-                         ] ,
-                         [ rdf:type owl:Restriction ;
-                           owl:onProperty :smeltedFrom ;
-                           owl:someValuesFrom :RawChicken
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
@@ -1321,14 +1302,9 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Cod
 :Cod rdf:type owl:Class ;
      rdfs:subClassOf :Animal ,
-                     :Eatable ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :behaves ;
                        owl:someValuesFrom :Passive
-                     ] ,
-                     [ rdf:type owl:Restriction ;
-                       owl:onProperty :smeltedFrom ;
-                       owl:someValuesFrom :RawCod
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :spawnsIn ;
@@ -1393,6 +1369,51 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Consumable
 :Consumable rdf:type owl:Class ;
             rdfs:subClassOf :Item .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/CookedBeef
+:CookedBeef rdf:type owl:Class ;
+            owl:equivalentClass [ rdf:type owl:Restriction ;
+                                  owl:onProperty :smeltedFrom ;
+                                  owl:someValuesFrom :RawBeef
+                                ] ;
+            rdfs:subClassOf :Eatable .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/CookedCod
+:CookedCod rdf:type owl:Class ;
+           owl:equivalentClass [ rdf:type owl:Restriction ;
+                                 owl:onProperty :smeltedFrom ;
+                                 owl:someValuesFrom :RawCod
+                               ] ;
+           rdfs:subClassOf :Eatable .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/CookedMutton
+:CookedMutton rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :smeltedFrom ;
+                                    owl:someValuesFrom :RawMutton
+                                  ] ;
+              rdfs:subClassOf :Eatable .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/CookedPorkchop
+:CookedPorkchop rdf:type owl:Class ;
+                owl:equivalentClass [ rdf:type owl:Restriction ;
+                                      owl:onProperty :smeltedFrom ;
+                                      owl:someValuesFrom :RawPorkchop
+                                    ] ;
+                rdfs:subClassOf :Eatable .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/CookedRabbit
+:CookedRabbit rdf:type owl:Class ;
+              owl:equivalentClass [ rdf:type owl:Restriction ;
+                                    owl:onProperty :smeltedFrom ;
+                                    owl:someValuesFrom :RawRabbit
+                                  ] ;
+              rdfs:subClassOf :Eatable .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Copper
@@ -2871,31 +2892,6 @@
 :Hoglin rdf:type owl:Class ;
         rdfs:subClassOf :Animal ,
                         :Monster ,
-                        [ owl:intersectionOf ( [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :dropsItem ;
-                                                                        owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                                                                        owl:onClass :RawPorkchop
-                                                                      ]
-                                                                      [ rdf:type owl:Restriction ;
-                                                                        owl:onProperty :dropsItem ;
-                                                                        owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
-                                                                        owl:onClass :RawPorkchop
-                                                                      ]
-                                                                    ) ;
-                                                 rdf:type owl:Class
-                                               ]
-                                               [ rdf:type owl:Restriction ;
-                                                 owl:onProperty :dropsItem ;
-                                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                                 owl:onClass :Leather
-                                               ]
-                                             ) ;
-                          rdf:type owl:Class
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :behaves ;
-                          owl:someValuesFrom :Hostile
-                        ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
                           owl:someValuesFrom :CrimsonForest
@@ -2903,6 +2899,21 @@
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
                           owl:allValuesFrom :CrimsonForest
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :dropsItem ;
+                          owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
+                          owl:onClass :RawPorkchop
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :dropsItem ;
+                          owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                          owl:onClass :Leather
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :dropsItem ;
+                          owl:maxQualifiedCardinality "4"^^xsd:nonNegativeInteger ;
+                          owl:onClass :RawPorkchop
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :health ;
@@ -3484,21 +3495,25 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Meat
 :Meat rdf:type owl:Class ;
-      owl:equivalentClass [ rdf:type owl:Class ;
-                            owl:unionOf ( [ rdf:type owl:Restriction ;
-                                            owl:onProperty :smeltedFrom ;
-                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
-                                                                 owl:onProperty [ owl:inverseOf :dropsItem
-                                                                                ] ;
-                                                                 owl:someValuesFrom :Animal
-                                                               ]
-                                          ]
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty [ owl:inverseOf :dropsItem
-                                                           ] ;
-                                            owl:someValuesFrom :Animal
-                                          ]
-                                        )
+      owl:equivalentClass [ owl:intersectionOf ( :Eatable
+                                                 [ rdf:type owl:Class ;
+                                                   owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty :smeltedFrom ;
+                                                                   owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty [ owl:inverseOf :dropsItem
+                                                                                                       ] ;
+                                                                                        owl:someValuesFrom :Animal
+                                                                                      ]
+                                                                 ]
+                                                                 [ rdf:type owl:Restriction ;
+                                                                   owl:onProperty [ owl:inverseOf :dropsItem
+                                                                                  ] ;
+                                                                   owl:someValuesFrom :Animal
+                                                                 ]
+                                                               )
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
                           ] ;
       rdfs:subClassOf :Eatable .
 
@@ -3583,15 +3598,6 @@
                                   owl:onProperty :inDimension ;
                                   owl:hasValue :Overworld
                                 ] .
-
-
-###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Mutton
-:Mutton rdf:type owl:Class ;
-        rdfs:subClassOf :Eatable ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :smeltedFrom ;
-                          owl:someValuesFrom :RawMutton
-                        ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Nautilus
@@ -4248,15 +4254,6 @@
                        ] .
 
 
-###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Porkchop
-:Porkchop rdf:type owl:Class ;
-          owl:equivalentClass [ rdf:type owl:Restriction ;
-                                owl:onProperty :smeltedFrom ;
-                                owl:someValuesFrom :RawPorkchop
-                              ] ;
-          rdfs:subClassOf :Eatable .
-
-
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Potato
 :Potato rdf:type owl:Class ;
         rdfs:subClassOf :Crops ,
@@ -4373,14 +4370,9 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Rabbit
 :Rabbit rdf:type owl:Class ;
         rdfs:subClassOf :Animal ,
-                        :Eatable ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
                           owl:someValuesFrom :Passive
-                        ] ,
-                        [ rdf:type owl:Restriction ;
-                          owl:onProperty :smeltedFrom ;
-                          owl:someValuesFrom :RawRabbit
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
@@ -4504,6 +4496,15 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RawBeef
 :RawBeef rdf:type owl:Class ;
+         owl:equivalentClass [ owl:intersectionOf ( :Eatable
+                                                    [ rdf:type owl:Restriction ;
+                                                      owl:onProperty [ owl:inverseOf :dropsItem
+                                                                     ] ;
+                                                      owl:someValuesFrom :Cow
+                                                    ]
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
          rdfs:subClassOf :Eatable ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :rarity ;
@@ -4517,6 +4518,15 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RawChicken
 :RawChicken rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Eatable
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty [ owl:inverseOf :dropsItem
+                                                                        ] ;
+                                                         owl:someValuesFrom :Chicken
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
             rdfs:subClassOf :Eatable ,
                             [ rdf:type owl:Restriction ;
                               owl:onProperty :rarity ;
@@ -4530,6 +4540,15 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RawCod
 :RawCod rdf:type owl:Class ;
+        owl:equivalentClass [ owl:intersectionOf ( :Eatable
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty [ owl:inverseOf :dropsItem
+                                                                    ] ;
+                                                     owl:someValuesFrom :Cod
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
         rdfs:subClassOf :Eatable ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :rarity ;
@@ -4582,6 +4601,15 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RawMutton
 :RawMutton rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Eatable
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty [ owl:inverseOf :dropsItem
+                                                                       ] ;
+                                                        owl:someValuesFrom :Sheep
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
            rdfs:subClassOf :Eatable ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
@@ -4595,6 +4623,15 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RawPorkchop
 :RawPorkchop rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( :Eatable
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty [ owl:inverseOf :dropsItem
+                                                                         ] ;
+                                                          owl:someValuesFrom :Pig
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
              rdfs:subClassOf :Eatable ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
@@ -4608,6 +4645,15 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RawRabbit
 :RawRabbit rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Eatable
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty [ owl:inverseOf :dropsItem
+                                                                       ] ;
+                                                        owl:someValuesFrom :Rabbit
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
            rdfs:subClassOf :Eatable ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
@@ -4621,6 +4667,15 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RawSalmon
 :RawSalmon rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Eatable
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty [ owl:inverseOf :dropsItem
+                                                                       ] ;
+                                                        owl:someValuesFrom :Salmon
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
            rdfs:subClassOf :Eatable ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
@@ -4792,6 +4847,15 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RottenFlesh
 :RottenFlesh rdf:type owl:Class ;
+             owl:equivalentClass [ owl:intersectionOf ( :Eatable
+                                                        [ rdf:type owl:Restriction ;
+                                                          owl:onProperty [ owl:inverseOf :dropsItem
+                                                                         ] ;
+                                                          owl:someValuesFrom :Zombie
+                                                        ]
+                                                      ) ;
+                                   rdf:type owl:Class
+                                 ] ;
              rdfs:subClassOf :Eatable ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :rarity ;
@@ -4819,7 +4883,6 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Salmon
 :Salmon rdf:type owl:Class ;
         rdfs:subClassOf :Animal ,
-                        :Eatable ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
                           owl:someValuesFrom :Passive
@@ -5357,6 +5420,15 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/SpiderEye
 :SpiderEye rdf:type owl:Class ;
+           owl:equivalentClass [ owl:intersectionOf ( :Eatable
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty [ owl:inverseOf :dropsItem
+                                                                       ] ;
+                                                        owl:someValuesFrom :Spider
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
            rdfs:subClassOf :Eatable ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :rarity ;
@@ -6214,14 +6286,26 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/WeakWeapon
 :WeakWeapon rdf:type owl:Class ;
             owl:equivalentClass [ owl:intersectionOf ( :Weapon
-                                                       [ rdf:type owl:Restriction ;
-                                                         owl:onProperty :damage ;
-                                                         owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                                              owl:onDatatype xsd:int ;
-                                                                              owl:withRestrictions ( [ xsd:maxInclusive "5"^^xsd:int
-                                                                                                     ]
-                                                                                                   )
-                                                                            ]
+                                                       [ rdf:type owl:Class ;
+                                                         owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :attackSpeed ;
+                                                                         owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                              owl:onDatatype xsd:decimal ;
+                                                                                              owl:withRestrictions ( [ xsd:maxInclusive 0.8
+                                                                                                                     ]
+                                                                                                                   )
+                                                                                            ]
+                                                                       ]
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty :damage ;
+                                                                         owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                              owl:onDatatype xsd:int ;
+                                                                                              owl:withRestrictions ( [ xsd:maxInclusive "5"^^xsd:int
+                                                                                                                     ]
+                                                                                                                   )
+                                                                                            ]
+                                                                       ]
+                                                                     )
                                                        ]
                                                      ) ;
                                   rdf:type owl:Class
@@ -6416,10 +6500,6 @@
                                               ]
                                             ) ;
                          rdf:type owl:Class
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :behaves ;
-                         owl:someValuesFrom :Hostile
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :spawnsIn ;
@@ -6653,10 +6733,6 @@
                           rdf:type owl:Class
                         ] ,
                         [ rdf:type owl:Restriction ;
-                          owl:onProperty :behaves ;
-                          owl:someValuesFrom :Hostile
-                        ] ,
-                        [ rdf:type owl:Restriction ;
                           owl:onProperty :dropsItem ;
                           owl:allValuesFrom :RottenFlesh
                         ] ,
@@ -6743,10 +6819,6 @@
                                                     ]
                                                   ) ;
                                rdf:type owl:Class
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :behaves ;
-                               owl:someValuesFrom :Passive
                              ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :spawnsIn ;
@@ -6946,6 +7018,21 @@
 #    Individuals
 #################################################################
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#CookedPorkchop01
+:CookedPorkchop01 rdf:type owl:NamedIndividual ;
+                  :smeltedFrom :RawPorkchop01 .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#Pig01
+:Pig01 rdf:type owl:NamedIndividual ,
+                :Pig ;
+       :dropsItem :RawPorkchop01 .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#RawPorkchop01
+:RawPorkchop01 rdf:type owl:NamedIndividual .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Alex
 :Alex rdf:type owl:NamedIndividual ,
                :Player ;
@@ -7138,12 +7225,6 @@
                     :Pickaxe .
 
 
-###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Pig01
-:Pig01 rdf:type owl:NamedIndividual ,
-                :Pig ;
-       :dropsItem :RawPorkchop01 .
-
-
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Plains01
 :Plains01 rdf:type owl:NamedIndividual ,
                    :Plains .
@@ -7158,12 +7239,6 @@
 :Pluto rdf:type owl:NamedIndividual ,
                 :Wolf ;
        :tamedBy :Steve .
-
-
-###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Porkchop01
-:Porkchop01 rdf:type owl:NamedIndividual ,
-                     :Porkchop ;
-            :smeltedFrom :RawPorkchop01 .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Potion01
@@ -7188,10 +7263,6 @@
 :Rabbit02 rdf:type owl:NamedIndividual ,
                    :Rabbit ;
           :spawnsIn :Desert01 .
-
-
-###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RawPorkchop01
-:RawPorkchop01 rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Shears01

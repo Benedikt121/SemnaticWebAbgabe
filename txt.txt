@@ -111,6 +111,13 @@
 #    Data properties
 #################################################################
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#attackSpeed
+:attackSpeed rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty ;
+             rdfs:domain :Tool ;
+             rdfs:range xsd:decimal .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/armorPoints
 :armorPoints rdf:type owl:DatatypeProperty ;
              rdfs:domain :Wearable ;
@@ -148,6 +155,139 @@
 #################################################################
 #    Classes
 #################################################################
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#Bow
+:Bow rdf:type owl:Class ;
+     rdfs:subClassOf :Weapon ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :attackSpeed ;
+                       owl:hasValue 1.0
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :damage ;
+                       owl:hasValue 10
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :durability ;
+                       owl:hasValue 384
+                     ] .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#DesertRabbit
+:DesertRabbit rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :Rabbit
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :spawnsIn ;
+                                                           owl:someValuesFrom :Desert
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+              rdfs:subClassOf :Rabbit .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#DiamondAxe
+:DiamondAxe rdf:type owl:Class ;
+            rdfs:subClassOf :Axe ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :attackSpeed ;
+                              owl:hasValue 1.0
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :damage ;
+                              owl:hasValue 9
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :durability ;
+                              owl:hasValue 1561
+                            ] .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#IronAxe
+:IronAxe rdf:type owl:Class ;
+         rdfs:subClassOf :Axe ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :attackSpeed ;
+                           owl:hasValue 0.9
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :damage ;
+                           owl:hasValue 9
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :durability ;
+                           owl:hasValue 250
+                         ] .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#NetheriteAxe
+:NetheriteAxe rdf:type owl:Class ;
+              rdfs:subClassOf :Axe ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :attackSpeed ;
+                                owl:hasValue 1.0
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :damage ;
+                                owl:hasValue 10
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :durability ;
+                                owl:hasValue 2031
+                              ] .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#SnowRabbit
+:SnowRabbit rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Rabbit
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :spawnsIn ;
+                                                         owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                              owl:unionOf ( :SnowyPlains
+                                                                                            :SnowySlopes
+                                                                                            :SnowyTaiga
+                                                                                          )
+                                                                            ]
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf :Rabbit .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#StoneAxe
+:StoneAxe rdf:type owl:Class ;
+          rdfs:subClassOf :Axe ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :attackSpeed ;
+                            owl:hasValue 0.8
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :damage ;
+                            owl:hasValue 9
+                          ] ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :durability ;
+                            owl:hasValue 131
+                          ] .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#WoodenAxe
+:WoodenAxe rdf:type owl:Class ;
+           rdfs:subClassOf :Axe ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :attackSpeed ;
+                             owl:hasValue 0.8
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :damage ;
+                             owl:hasValue 7
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :durability ;
+                             owl:hasValue 59
+                           ] .
+
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Allay
 :Allay rdf:type owl:Class ;
@@ -361,6 +501,7 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Axe
 :Axe rdf:type owl:Class ;
      rdfs:subClassOf :Tool ,
+                     :Weapon ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :stackSize ;
                        owl:hasValue "1"^^xsd:nonNegativeInteger
@@ -517,6 +658,15 @@
                        owl:onProperty :health ;
                        owl:hasValue "10"^^xsd:nonNegativeInteger
                      ] .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Beef
+:Beef rdf:type owl:Class ;
+      rdfs:subClassOf :Eatable ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :smeltedFrom ;
+                        owl:someValuesFrom :RawBeef
+                      ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Beetroot
@@ -1206,9 +1356,14 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Chicken
 :Chicken rdf:type owl:Class ;
          rdfs:subClassOf :Animal ,
+                         :Eatable ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :behaves ;
                            owl:someValuesFrom :Passive
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :smeltedFrom ;
+                           owl:someValuesFrom :RawChicken
                          ] ,
                          [ rdf:type owl:Restriction ;
                            owl:onProperty :spawnsIn ;
@@ -1255,9 +1410,14 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Cod
 :Cod rdf:type owl:Class ;
      rdfs:subClassOf :Animal ,
+                     :Eatable ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :behaves ;
                        owl:someValuesFrom :Passive
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :smeltedFrom ;
+                       owl:someValuesFrom :RawCod
                      ] ,
                      [ rdf:type owl:Restriction ;
                        owl:onProperty :spawnsIn ;
@@ -1605,6 +1765,19 @@
                           owl:onProperty :inDimension ;
                           owl:hasValue :Overworld
                         ] .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/DiamondSword
+:DiamondSword rdf:type owl:Class ;
+              rdfs:subClassOf :Sword ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :damage ;
+                                owl:hasValue 7
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :durability ;
+                                owl:hasValue 1561
+                              ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Dimension
@@ -2139,6 +2312,10 @@
                               owl:someValuesFrom :Common
                             ] ,
                             [ rdf:type owl:Restriction ;
+                              owl:onProperty :durability ;
+                              owl:hasValue 64
+                            ] ,
+                            [ rdf:type owl:Restriction ;
                               owl:onProperty :stackSize ;
                               owl:hasValue "1"^^xsd:nonNegativeInteger
                             ] .
@@ -2553,6 +2730,10 @@
                              owl:someValuesFrom :Common
                            ] ,
                            [ rdf:type owl:Restriction ;
+                             owl:onProperty :attackSpeed ;
+                             owl:hasValue 1.0
+                           ] ,
+                           [ rdf:type owl:Restriction ;
                              owl:onProperty :damage ;
                              owl:hasValue "7"^^xsd:nonNegativeInteger
                            ] ,
@@ -2564,6 +2745,19 @@
                              owl:onProperty :stackSize ;
                              owl:hasValue "1"^^xsd:nonNegativeInteger
                            ] .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/GoldenSword
+:GoldenSword rdf:type owl:Class ;
+             rdfs:subClassOf :Sword ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :damage ;
+                               owl:hasValue 4
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :durability ;
+                               owl:hasValue 32
+                             ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Golem
@@ -3063,6 +3257,19 @@
                          ] .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/IronSword
+:IronSword rdf:type owl:Class ;
+           rdfs:subClassOf :Sword ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :damage ;
+                             owl:hasValue 6
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :durability ;
+                             owl:hasValue 250
+                           ] .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Item
 :Item rdf:type owl:Class .
 
@@ -3319,10 +3526,21 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Meat
 :Meat rdf:type owl:Class ;
-      owl:equivalentClass [ rdf:type owl:Restriction ;
-                            owl:onProperty [ owl:inverseOf :dropsItem
-                                           ] ;
-                            owl:someValuesFrom :Animal
+      owl:equivalentClass [ rdf:type owl:Class ;
+                            owl:unionOf ( [ rdf:type owl:Restriction ;
+                                            owl:onProperty :smeltedFrom ;
+                                            owl:someValuesFrom [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty [ owl:inverseOf :dropsItem
+                                                                                ] ;
+                                                                 owl:someValuesFrom :Animal
+                                                               ]
+                                          ]
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty [ owl:inverseOf :dropsItem
+                                                           ] ;
+                                            owl:someValuesFrom :Animal
+                                          ]
+                                        )
                           ] ;
       rdfs:subClassOf :Eatable .
 
@@ -3407,6 +3625,15 @@
                                   owl:onProperty :inDimension ;
                                   owl:hasValue :Overworld
                                 ] .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Mutton
+:Mutton rdf:type owl:Class ;
+        rdfs:subClassOf :Eatable ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :smeltedFrom ;
+                          owl:someValuesFrom :RawMutton
+                        ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Nautilus
@@ -3498,6 +3725,19 @@
                                 owl:onProperty :inDimension ;
                                 owl:hasValue :Nether
                               ] .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/NetheriteSword
+:NetheriteSword rdf:type owl:Class ;
+                rdfs:subClassOf :Sword ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :damage ;
+                                  owl:hasValue 8
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :durability ;
+                                  owl:hasValue 2031
+                                ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Neutral
@@ -4033,6 +4273,15 @@
                        ] .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Porkchop
+:Porkchop rdf:type owl:Class ;
+          owl:equivalentClass [ rdf:type owl:Restriction ;
+                                owl:onProperty :smeltedFrom ;
+                                owl:someValuesFrom :RawPorkchop
+                              ] ;
+          rdfs:subClassOf :Eatable .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Potato
 :Potato rdf:type owl:Class ;
         rdfs:subClassOf :Crops ,
@@ -4149,9 +4398,14 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Rabbit
 :Rabbit rdf:type owl:Class ;
         rdfs:subClassOf :Animal ,
+                        :Eatable ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
                           owl:someValuesFrom :Passive
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :smeltedFrom ;
+                          owl:someValuesFrom :RawRabbit
                         ] ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :spawnsIn ;
@@ -4590,6 +4844,7 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Salmon
 :Salmon rdf:type owl:Class ;
         rdfs:subClassOf :Animal ,
+                        :Eatable ,
                         [ rdf:type owl:Restriction ;
                           owl:onProperty :behaves ;
                           owl:someValuesFrom :Passive
@@ -5246,6 +5501,19 @@
                        ] .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/StoneSword
+:StoneSword rdf:type owl:Class ;
+            rdfs:subClassOf :Sword ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :damage ;
+                              owl:hasValue 5
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :durability ;
+                              owl:hasValue 131
+                            ] .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/StonyBeach
 :StonyBeach rdf:type owl:Class ;
             rdfs:subClassOf :TemperateBiome ,
@@ -5377,6 +5645,33 @@
                         ] .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/StrongWeapon
+:StrongWeapon rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :Weapon
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :attackSpeed ;
+                                                           owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                owl:onDatatype xsd:decimal ;
+                                                                                owl:withRestrictions ( [ xsd:minInclusive 0.9
+                                                                                                       ]
+                                                                                                     )
+                                                                              ]
+                                                         ]
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :damage ;
+                                                           owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                owl:onDatatype xsd:int ;
+                                                                                owl:withRestrictions ( [ xsd:minInclusive "7"^^xsd:int
+                                                                                                       ]
+                                                                                                     )
+                                                                              ]
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] ;
+              rdfs:subClassOf :Weapon .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Sugar
 :Sugar rdf:type owl:Class ;
        rdfs:subClassOf :Item ,
@@ -5480,7 +5775,11 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Sword
 :Sword rdf:type owl:Class ;
-       rdfs:subClassOf :Weapon .
+       rdfs:subClassOf :Weapon ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :attackSpeed ;
+                         owl:hasValue 1.6
+                       ] .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Tadpole
@@ -5892,6 +6191,24 @@
                               ] .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/WeakWeapon
+:WeakWeapon rdf:type owl:Class ;
+            owl:equivalentClass [ owl:intersectionOf ( :Weapon
+                                                       [ rdf:type owl:Restriction ;
+                                                         owl:onProperty :damage ;
+                                                         owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                              owl:onDatatype xsd:int ;
+                                                                              owl:withRestrictions ( [ xsd:maxInclusive "5"^^xsd:int
+                                                                                                     ]
+                                                                                                   )
+                                                                            ]
+                                                       ]
+                                                     ) ;
+                                  rdf:type owl:Class
+                                ] ;
+            rdfs:subClassOf :Weapon .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Weapon
 :Weapon rdf:type owl:Class ;
         rdfs:subClassOf :Tool .
@@ -6263,6 +6580,19 @@
                                 ] .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/WoodenSword
+:WoodenSword rdf:type owl:Class ;
+             rdfs:subClassOf :Sword ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :damage ;
+                               owl:hasValue 4
+                             ] ,
+                             [ rdf:type owl:Restriction ;
+                               owl:onProperty :durability ;
+                               owl:hasValue 59
+                             ] .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Wool
 :Wool rdf:type owl:Class ;
       rdfs:subClassOf :FullBlock .
@@ -6579,6 +6909,28 @@
 #    Individuals
 #################################################################
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#Desert01
+:Desert01 rdf:type owl:NamedIndividual ,
+                   :Desert .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#Rabbit01
+:Rabbit01 rdf:type owl:NamedIndividual ,
+                   :Rabbit ;
+          :spawnsIn :SnowyPlains01 .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#Rabbit02
+:Rabbit02 rdf:type owl:NamedIndividual ,
+                   :Rabbit ;
+          :spawnsIn :Desert01 .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#SnowyPlains01
+:SnowyPlains01 rdf:type owl:NamedIndividual ,
+                        :SnowyPlains .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Alex
 :Alex rdf:type owl:NamedIndividual ,
                :Player ;
@@ -6619,6 +6971,28 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Enderpearl01
 :Enderpearl01 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/FishingRod01
+:FishingRod01 rdf:type owl:NamedIndividual ,
+                       :FishingRod ;
+              :craftedWith :Stick01 ,
+                           :String01 ;
+              :durability 64.0 .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/IronAxe1
+:IronAxe1 rdf:type owl:NamedIndividual ,
+                   :Axe ;
+          :craftedWith :IronIngot01 ,
+                       :Stick01 ;
+          :damage 9 ;
+          :durability 250.0 .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/IronIngot01
+:IronIngot01 rdf:type owl:NamedIndividual ,
+                      :IronIngot .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Meadow01
@@ -6662,6 +7036,12 @@
        :tamedBy :Steve .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Porkchop01
+:Porkchop01 rdf:type owl:NamedIndividual ,
+                     :Porkchop ;
+            :smeltedFrom :RawPorkchop01 .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RawPorkchop01
 :RawPorkchop01 rdf:type owl:NamedIndividual .
 
@@ -6669,6 +7049,16 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Steve
 :Steve rdf:type owl:NamedIndividual ;
        :livesIn :MushroomFields01 .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Stick01
+:Stick01 rdf:type owl:NamedIndividual ,
+                  :Stick .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/String01
+:String01 rdf:type owl:NamedIndividual ,
+                   :String .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/TheEnd

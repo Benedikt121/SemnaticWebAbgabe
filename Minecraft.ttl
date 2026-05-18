@@ -7427,6 +7427,72 @@
 
 [ rdf:type owl:AllDifferent ;
   owl:distinctMembers ( :Alex
+                        :Arrow01
+                        :ArrowOfPoison
+                        :ArrowOfSlowness
+                        :ArrowOfWeakness
+                        :Axe01
+                        :Beacon01
+                        :Blaze01
+                        :BlazeRod01
+                        :Bone01
+                        :BoneBlock01
+                        :BoneMeal01
+                        :Bow01
+                        :CookedPorkchop01
+                        :Creeper01
+                        :Desert01
+                        :End
+                        :Enderdragon
+                        :Enderman01
+                        :Enderpearl01
+                        :FishingRod01
+                        :GunPowder
+                        :Hoe01
+                        :IronAxe1
+                        :IronIngot01
+                        :IronOre01
+                        :IronSword01
+                        :Meadow01
+                        :MushroomFields01
+                        :Nether
+                        :NetherStar01
+                        :Overworld
+                        :Pickaxe01
+                        :Pig01
+                        :Plains01
+                        :Plank01
+                        :Pluto
+                        :Potion01
+                        :PotionOfPoison01
+                        :Rabbit01
+                        :Rabbit02
+                        :RabbitsFoot01
+                        :RawPorkchop01
+                        :RottenFlesh01
+                        :Shears01
+                        :Shovel01
+                        :Skeleton01
+                        :Slime01
+                        :SlimeBall01
+                        :SlimeBlock01
+                        :SnowyPlains01
+                        :Spider01
+                        :SpiderEye01
+                        :Steve
+                        :Stick01
+                        :String01
+                        :Sword01
+                        :TNT01
+                        :TheEnd
+                        :Wither
+                        :Zombie01
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( :Alex
                         :End
                         :Enderdragon
                         :Nether

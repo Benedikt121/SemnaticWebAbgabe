@@ -7257,6 +7257,7 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Rabbit01
 :Rabbit01 rdf:type owl:NamedIndividual ,
                    :Rabbit ;
+          :dropsItem :RabbitsFoot01 ;
           :spawnsIn :SnowyPlains01 .
 
 
@@ -7264,6 +7265,11 @@
 :Rabbit02 rdf:type owl:NamedIndividual ,
                    :Rabbit ;
           :spawnsIn :Desert01 .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RabbitsFoot01
+:RabbitsFoot01 rdf:type owl:NamedIndividual ,
+                        :RabbitsFoot .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RawPorkchop01

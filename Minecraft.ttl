@@ -4,6 +4,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix minecraft: <http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#> .
 @base <http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/> .
 
 <http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft> rdf:type owl:Ontology .
@@ -61,7 +62,11 @@
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/dropsItem
 :dropsItem rdf:type owl:ObjectProperty ;
-           rdfs:domain :Mob ;
+           rdfs:domain [ rdf:type owl:Class ;
+                         owl:unionOf ( :Block
+                                       :Mob
+                                     )
+                       ] ;
            rdfs:range :Item .
 
 
@@ -7018,21 +7023,6 @@
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#CookedPorkchop01
-:CookedPorkchop01 rdf:type owl:NamedIndividual ;
-                  :smeltedFrom :RawPorkchop01 .
-
-
-###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#Pig01
-:Pig01 rdf:type owl:NamedIndividual ,
-                :Pig ;
-       :dropsItem :RawPorkchop01 .
-
-
-###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft#RawPorkchop01
-:RawPorkchop01 rdf:type owl:NamedIndividual .
-
-
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Alex
 :Alex rdf:type owl:NamedIndividual ,
                :Player ;
@@ -7105,6 +7095,11 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Bow01
 :Bow01 rdf:type owl:NamedIndividual ,
                 :Bow .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/CookedPorkchop01
+:CookedPorkchop01 rdf:type owl:NamedIndividual ;
+                  :smeltedFrom :RawPorkchop01 .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Creeper01
@@ -7225,6 +7220,12 @@
                     :Pickaxe .
 
 
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Pig01
+:Pig01 rdf:type owl:NamedIndividual ,
+                :Pig ;
+       :dropsItem :RawPorkchop01 .
+
+
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Plains01
 :Plains01 rdf:type owl:NamedIndividual ,
                    :Plains .
@@ -7263,6 +7264,15 @@
 :Rabbit02 rdf:type owl:NamedIndividual ,
                    :Rabbit ;
           :spawnsIn :Desert01 .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RawPorkchop01
+:RawPorkchop01 rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/RottenFlesh01
+:RottenFlesh01 rdf:type owl:NamedIndividual ,
+                        :RottenFlesh .
 
 
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Shears01
@@ -7366,6 +7376,7 @@
 ###  http://www.semanticweb.org/bboeckle/ontologies/2026/4/Minecraft/Zombie01
 :Zombie01 rdf:type owl:NamedIndividual ,
                    :Zombie ;
+          :dropsItem :RottenFlesh01 ;
           :spawnsIn :Plains01 .
 
 
